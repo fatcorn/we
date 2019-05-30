@@ -6,16 +6,31 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="codeGenerator" />
+        <module name="core" />
+        <module name="entities" />
+        <module name="enums" />
         <module name="eureka" />
         <module name="getway" />
         <module name="ucenter" />
+        <module name="user-core" />
+        <module name="usercore" />
+        <module name="utils" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="codeGenerator" target="1.7" />
+      <module name="core" target="1.5" />
+      <module name="entities" target="1.5" />
+      <module name="enums" target="1.8" />
       <module name="eureka" target="1.5" />
       <module name="getway" target="1.5" />
+      <module name="group-core" target="1.5" />
       <module name="group-server" target="1.5" />
       <module name="ucenter" target="1.5" />
+      <module name="user-core" target="1.5" />
+      <module name="usercore" target="1.5" />
+      <module name="utils" target="1.5" />
       <module name="we" target="1.5" />
     </bytecodeTargetLevel>
   </component>

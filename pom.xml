@@ -4,20 +4,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.den</groupId>
-    <artifactId>we</artifactId>
+    <groupId>com.den.we</groupId>
+    <artifactId>we-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>group-server</module>
         <module>ucenter</module>
+        <module>codeGenerator</module>
+        <module>group-core</module>
     </modules>
 
     <properties>
         <spring-boot_version>2.0.6.RELEASE</spring-boot_version>
         <spring-cloud_version>Finchley.SR3</spring-cloud_version>
         <druid_version>1.1.12</druid_version>
-        <mysql.version>6.0.6</mysql.version>
+        <mysql_version>6.0.6</mysql_version>
+        <mybatis_plus_version>3.1.1</mybatis_plus_version>
+        <lombok_version>1.18.4</lombok_version>
     </properties>
 
     <dependencies>
@@ -51,8 +55,21 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
+            <version>${mysql_version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis_plus_version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok_version}</version>
+        </dependency>
+
 
     </dependencies>
 
