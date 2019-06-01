@@ -33,7 +33,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         String encryptPassword = new SimpleHash("md5", password, salt, 2).toHex().toLowerCase();
 
         user.setMobilePhone(phone);
-        user.setPassword(password);
+        user.setPassword(encryptPassword);
         user.setSalt(salt);
         user.setUserName(phone);
 

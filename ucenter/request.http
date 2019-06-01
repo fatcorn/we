@@ -1,0 +1,8 @@
+#注册接口
+
+POST http://localhost:9200/register/registerByPhone
+Content-Type: application/x-www-form-urlencoded
+
+phoneNumber=123456&password=123456
+
+###
