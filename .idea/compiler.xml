@@ -19,19 +19,19 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="codeGenerator" target="1.7" />
-      <module name="core" target="1.5" />
-      <module name="entities" target="1.5" />
+      <module name="codeGenerator" target="1.8" />
+      <module name="core" target="1.8" />
+      <module name="entities" target="1.8" />
       <module name="enums" target="1.8" />
-      <module name="eureka" target="1.5" />
-      <module name="getway" target="1.5" />
-      <module name="group-core" target="1.5" />
-      <module name="group-server" target="1.5" />
-      <module name="ucenter" target="1.5" />
-      <module name="user-core" target="1.5" />
-      <module name="usercore" target="1.5" />
-      <module name="utils" target="1.5" />
-      <module name="we" target="1.5" />
+      <module name="eureka" target="1.8" />
+      <module name="getway" target="1.8" />
+      <module name="group-core" target="1.8" />
+      <module name="group-server" target="1.8" />
+      <module name="ucenter" target="1.8" />
+      <module name="user-core" target="1.8" />
+      <module name="usercore" target="1.8" />
+      <module name="utils" target="1.8" />
+      <module name="we" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
