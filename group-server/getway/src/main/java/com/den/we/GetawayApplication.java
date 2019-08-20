@@ -8,8 +8,8 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 @EnableZuulProxy
 /*@EnableAutoConfiguration*/
 @SpringCloudApplication
-public class GetweyApplication {
+public class GetawayApplication {
     public static void main(String[] args){
-        SpringApplication.run(GetweyApplication.class,args);
+        SpringApplication.run(GetawayApplication.class,args);
     }
 }

@@ -3,6 +3,7 @@ package com.den.we.entity;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Date;
 * @since 2019-05-30
 */
 @Data
-public class User {
+public class User implements Serializable {
 
     private Long id;
 
@@ -89,29 +90,14 @@ public class User {
     private Integer status;
 
     /**
-    * jwt
-    */
-    private String token;
-
-    /**
-    * token过期时间
-    */
-    private Date tokenExpireTime;
-
-    /**
-    * 上一次登录设备
-    */
-    private String lastLoginFacility;
-
-    /**
     * 创建时间
     */
-    private Date createTime;
+    private Long createTime;
 
     /**
     * 更新时间
     */
-    private Date updateTime;
+    private Long updateTime;
 
 
 }

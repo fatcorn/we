@@ -20,7 +20,7 @@
         <spring-cloud_version>Finchley.SR3</spring-cloud_version>
         <druid_version>1.1.12</druid_version>
         <mysql_version>6.0.6</mysql_version>
-        <mybatis_plus_version>3.1.1</mybatis_plus_version>
+        <mybatis_plus_version>3.1.2</mybatis_plus_version>
         <lombok_version>1.18.4</lombok_version>
     </properties>
 
