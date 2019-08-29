@@ -28,7 +28,10 @@ public class LoginController {
         User user = iUserService.findByPhone(phoneNumber);
         String encryptPassword = new SimpleHash("md5", password, user.getSalt(), 2).toHex().toLowerCase();
 
+        request.getSession().getId();
+
         request.getSession().setAttribute("session", user);
+        request.getSession().getAttribute("session");
         Assert.isTrue(user.getPassword().equals(encryptPassword), "密码错误");
 
         return MessageRespResult.success("登录成功");
