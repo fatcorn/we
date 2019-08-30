@@ -6,16 +6,21 @@ Content-Type: application/x-www-form-urlencoded
 phoneNumber=12345678&password=123456
 
 ###登录接口
-POST http://localhost:9202/login/login
+POST http://127.0.0.1:9201/UCENTER/uc/login/login
 Content-Type: application/x-www-form-urlencoded
 
 phoneNumber=123456&password=123456
 
 ###获取用户信息
-POST http://localhost:9202/uCenter/getUserInfo
+POST http://localhost:9202/uc/uCenter/getUserInfo
 Content-Type: application/x-www-form-urlencoded
-x-auth-token: 379c7f53-5806-46ee-b8d3-99cd70f4a5b5
+x-auth-token: a7c4f85c-088d-4147-a043-87832881f38d
 
 userId=1163690799456124930
+
+####获取用户信息
+POST http://localhost:9202/uc/uCenter/hello
+Content-Type: application/x-www-form-urlencoded
+x-auth-token: efa739f5-2092-4550-8a78-56a3e31bed7e
 
 ###

@@ -32,4 +32,9 @@ public class UserController {
     public MessageRespResult<User> getUserInfo(String userId) {
         return MessageRespResult.success4Data(userService.getById(userId));
     }
+
+    @RequestMapping("/hello")
+    public String hello() {
+        return "你好";
+    }
 }
