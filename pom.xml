@@ -13,6 +13,7 @@
         <module>ucenter</module>
         <module>codeGenerator</module>
         <module>group-core</module>
+        <module>chat</module>
     </modules>
 
     <properties>

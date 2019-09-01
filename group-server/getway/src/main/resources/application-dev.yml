@@ -12,10 +12,15 @@ spring:
     port: 6379
     database: 0
   cloud:
-    getway:
+    gateway:
       discovery:
         locator:
           enabled: true
+      routes:
+      - id: ucenter
+        uri: http://localhost:9202
+        predicates:
+        - Path=/a/**
 
 #eureka
 eureka:
