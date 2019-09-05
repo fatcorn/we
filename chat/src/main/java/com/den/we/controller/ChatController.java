@@ -16,5 +16,6 @@ public class ChatController {
         // 模拟延时，以便测试客户端是否在异步工作
         Thread.sleep(1000);
         return new Message("Hello, " + HtmlUtils.htmlEscape(message.getContent()) + "!");
+        //eturn  "hello" + message.getContent();
     }
 }

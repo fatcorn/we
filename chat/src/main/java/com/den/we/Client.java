@@ -73,7 +73,7 @@ public class Client {
             subscribeTopic("/topic/target", session);
             sendJsonMessage(session);
 
-            System.err.println("please input your new name:");
+            System.err.println("please input your new message:");
         }
     }
 
@@ -102,7 +102,8 @@ public class Client {
             if (line.length() == 0) {
                 continue;
             }
-            Message msg = new Message(name + ": I have a new name [" + line + "]");
+            Message msg = new Message();
+            msg.setContent(line);
             session.send(SEND_URL, msg);
         }
     }
