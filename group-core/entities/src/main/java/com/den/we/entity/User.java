@@ -1,5 +1,6 @@
 package com.den.we.entity;
 
+import com.den.we.CommonEnum;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -38,7 +39,7 @@ public class User implements Serializable {
     private Integer sex;
 
     //状态{0:禁用,1:正常}
-    private Integer status;
+    private CommonEnum status;
 
     //二维码
     private String qrCode;

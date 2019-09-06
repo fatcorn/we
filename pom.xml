@@ -14,6 +14,7 @@
         <module>codeGenerator</module>
         <module>group-core</module>
         <module>chat</module>
+        <module>community</module>
     </modules>
 
     <properties>

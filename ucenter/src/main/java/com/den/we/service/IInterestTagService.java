@@ -1,6 +1,7 @@
 package com.den.we.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.den.we.entity.InterestTag;
 
 /**
  * <p>
@@ -10,7 +11,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author fatKarin
  * @since 2019-05-30
  */
-public interface IInterestTagService extends IService<com.den.we.entity.InterestTag> {
+public interface IInterestTagService extends IService<InterestTag> {
 
 
+    boolean addOne(InterestTag interestTag, String nickName);
 }

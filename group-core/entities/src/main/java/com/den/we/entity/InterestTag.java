@@ -1,5 +1,7 @@
 package com.den.we.entity;
 
+import com.den.we.CommonEnum;
+import com.den.we.TagSourceEnum;
 import lombok.Data;
 
 import java.util.Date;
@@ -27,7 +29,7 @@ public class InterestTag implements Serializable {
     private Long userId;
 
     //标签来源{0:system,1:user}
-    private Integer source;
+    private TagSourceEnum source;
 
     //祖先id 为0 表示 这是一个大类
     private Long ancientId;
@@ -37,6 +39,9 @@ public class InterestTag implements Serializable {
 
     //标签使用人数
     private Long tagUserNum;
+
+    //是否验证 0 否， 1 是
+    private CommonEnum verified;
 
     //创建时间
     private Date createTime;
