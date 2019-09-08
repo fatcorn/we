@@ -1,4 +1,4 @@
-package com.den.we.community;
+package com.den.we;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
