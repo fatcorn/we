@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
+
 /**
  * @author fatKarin
  * @date 2019/9/9 16:12
@@ -36,4 +37,18 @@ public class PostsController {
         Assert.isTrue(result, "参数错误");
         return MessageRespResult.success();
     }
+
+    /**
+     * 点赞操作
+     * @param postsId
+     * @return
+     */
+    @RequestMapping("/thumpUp")
+    public MessageRespResult thumpUp(Long postsId) {
+        boolean result = iPostsService.thumpUp(postsId);
+        Assert.isTrue(result, "参数错误");
+        return MessageRespResult.success();
+    }
+
+
 }

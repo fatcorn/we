@@ -5,6 +5,7 @@ import com.den.we.entity.Posts;
 import com.den.we.mapper.PostsMapper;
 import com.den.we.service.IPostsService;
 import org.springframework.stereotype.Service;
+import com.den.we.util.*;
 
 import java.util.Calendar;
 
@@ -25,7 +26,14 @@ public class PostsServiceImpl extends ServiceImpl<PostsMapper, Posts> implements
         posts.setCreatorId(creatorId);
         posts.setCreateTime(Calendar.getInstance().getTime());
 
-        int result = this.baseMapper.insert(posts);
+        int result = baseMapper.insert(posts);
         return result > 0;
     }
+
+    @Override
+    public boolean thumpUp(Long postsId) {
+        int result = baseMapper.updateLikeCount(postsId);
+        return result > 0;
+    }
+
 }

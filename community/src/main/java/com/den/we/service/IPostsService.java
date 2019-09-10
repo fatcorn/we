@@ -14,4 +14,6 @@ import com.den.we.entity.Posts;
 public interface IPostsService extends IService<Posts> {
 
     boolean addNewOne(Long communityId, String title, String content, Long creatorId);
+
+    boolean thumpUp(Long postsId);
 }

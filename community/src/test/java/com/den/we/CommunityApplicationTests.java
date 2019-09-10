@@ -1,4 +1,4 @@
-package com.den.we.community;
+package com.den.we;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
