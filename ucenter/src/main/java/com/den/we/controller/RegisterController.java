@@ -1,11 +1,7 @@
 package com.den.we.controller;
 
-import com.den.we.IdWorkByTwitter;
 import com.den.we.MessageRespResult;
-import com.den.we.entity.User;
 import com.den.we.service.IUserService;
-import org.apache.shiro.crypto.hash.SimpleHash;
-import org.apache.shiro.util.ByteSource;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

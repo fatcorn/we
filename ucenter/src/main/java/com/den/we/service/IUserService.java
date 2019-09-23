@@ -13,6 +13,12 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IUserService extends IService<User> {
 
+    /**
+     * 手机密码简单注册
+     * @param phone
+     * @param password
+     * @return
+     */
     boolean register(String phone, String password);
 
     User findByPhone(String phone);

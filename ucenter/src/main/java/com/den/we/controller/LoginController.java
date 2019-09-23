@@ -3,6 +3,10 @@ package com.den.we.controller;
 import com.den.we.MessageRespResult;
 import com.den.we.entity.User;
 import com.den.we.service.IUserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+@Api(description = "登录控制器",tags={"登录接口"})
 @RestController
 @RequestMapping("/login")
 public class LoginController {
@@ -18,6 +23,11 @@ public class LoginController {
     @Resource
     private IUserService iUserService;
 
+    @ApiOperation(value = "查询otc对匹配的订单列表接口", notes = "查询otc对匹配的订单列表接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(value = "手机号", name = "phoneNumber", dataTypeClass = String.class, required = true),
+            @ApiImplicitParam(value = "密码", name = "password", dataTypeClass = String.class, required = true),
+    })
     @RequestMapping("/login")
     public MessageRespResult login(HttpServletRequest request, String phoneNumber, String password) {
         Assert.notNull(phoneNumber, "手机号不为空");
@@ -31,7 +41,6 @@ public class LoginController {
         request.getSession().getId();
 
         request.getSession().setAttribute("session", user);
-        request.getSession().getAttribute("session");
         Assert.isTrue(user.getPassword().equals(encryptPassword), "密码错误");
 
         return MessageRespResult.success("登录成功");
