@@ -50,5 +50,4 @@ public class PostsController {
         return MessageRespResult.success();
     }
 
-
 }

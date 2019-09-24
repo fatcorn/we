@@ -27,7 +27,13 @@ public class InterestTagController {
     private IInterestTagService interestTagService;
 
 
-
+    /**
+     * 用户添加用户标签
+     * @param request
+     * @param interestTag
+     * @param nickName
+     * @return
+     */
     @RequestMapping("/customerAdd")
     public MessageRespResult customerAdd(HttpServletRequest request, InterestTag interestTag, String nickName) {
 

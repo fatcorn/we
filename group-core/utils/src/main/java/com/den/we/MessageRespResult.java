@@ -1,6 +1,5 @@
 package com.den.we;
 
-
 import com.alibaba.fastjson.JSONObject;
 
 public class MessageRespResult<T> {

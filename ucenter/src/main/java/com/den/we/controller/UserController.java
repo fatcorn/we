@@ -28,6 +28,11 @@ public class UserController {
         return MessageRespResult.success();
     }
 
+    /**
+     * 获取用户信息
+     * @param userId
+     * @return
+     */
     @RequestMapping("/getUserInfo")
     public MessageRespResult<User> getUserInfo(String userId) {
         return MessageRespResult.success4Data(userService.getById(userId));

@@ -16,6 +16,12 @@ public class RegisterController {
     @Resource
     private IUserService iUserService;
 
+    /**
+     * 简单注册
+     * @param phoneNumber 手机号
+     * @param password    密码
+     * @return
+     */
     @PostMapping("/registerByPhone")
     public MessageRespResult phoneRegister(String phoneNumber, String password) {
         Assert.notNull(phoneNumber, "手机号不为空");

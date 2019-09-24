@@ -43,6 +43,10 @@ public class Interceptor implements WebMvcConfigurer {
         configurer.favorPathExtension(false);
     }
 
+    /**
+     * 拦截器
+     * @param registry
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new UserInterceptor())

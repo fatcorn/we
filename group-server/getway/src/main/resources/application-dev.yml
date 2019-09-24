@@ -16,6 +16,7 @@ spring:
       discovery:
         locator:
           enabled: true
+      #路由配置
       routes:
       - id: ucenter
         uri: http://localhost:9202
