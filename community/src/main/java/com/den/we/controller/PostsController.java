@@ -1,14 +1,21 @@
 package com.den.we.controller;
 
+import com.den.we.AssertUtil;
 import com.den.we.MessageCode;
 import com.den.we.MessageRespResult;
 import com.den.we.service.IPostsService;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 /**
@@ -30,12 +37,36 @@ public class PostsController {
      * @param creatorId     创建者id
      * @return  MessageRespResult
      */
-    @PostMapping("/post")
-    public MessageRespResult post(Long communityId, String title, String content, Long creatorId) {
+    @PostMapping("/addNewPost")
+    public MessageRespResult addNewPost(Long communityId, String title, String content, Long creatorId) {
 
         boolean result = iPostsService.addNewOne(communityId, title, content, creatorId);
-        Assert.isTrue(result, "参数错误");
+        AssertUtil.isTrue(result, MessageCode.ERROR);
         return MessageRespResult.success();
+    }
+
+    @RequestMapping("/uploadResources")
+    public MessageRespResult uploadResources(@RequestParam(value = "file") MultipartFile file) {
+        AssertUtil.notNull(file, MessageCode.UPLOAD_FILE_NOT_BE_NULL);
+
+        String fileName = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + "_" + file.getName();
+
+        String path = "D:/fileUpload/" +fileName;
+
+        //创建文件路径
+        File dest = new File(path);
+
+        try {
+            //上传文件
+            file.transferTo(dest); //保存文件
+            System.out.print("保存文件路径"+path+"\n");
+            //url="http://你自己的域名/项目名/images/"+fileName;//正式项目
+
+        } catch (IOException e) {
+            return MessageRespResult.error(MessageCode.UPLOAD_FAILED);
+        }
+
+        return MessageRespResult.success4Data(path);
     }
 
     /**

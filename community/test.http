@@ -6,8 +6,9 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
-POST http://localhost:9205/community/posts/post
+POST http://localhost:9201/COMMUNITY/community/posts/addNewPost
 Content-Type: application/x-www-form-urlencoded
+x-auth-token: ce2925e8-f173-470f-9b7f-44951944321c
 
 communityId=123&title=利物浦是冠军&content=  8覅第三部分iv纳斯      ,  兄弟&creatorId=123456
 

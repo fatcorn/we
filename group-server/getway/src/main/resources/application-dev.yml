@@ -22,7 +22,10 @@ spring:
         uri: http://localhost:9202
         predicates:
         - Path=/a/**
-
+      - id: community
+        uri: http://localhost:9205
+        predicates:
+        - Path=/a/**
 #eureka
 eureka:
   client:

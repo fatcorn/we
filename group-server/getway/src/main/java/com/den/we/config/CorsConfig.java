@@ -20,6 +20,7 @@ public class CorsConfig {
             config.addAllowedMethod("*");
             config.addAllowedOrigin("*");
             config.addAllowedHeader("*");
+            config.addExposedHeader("x-auth-token");
 
             UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(new PathPatternParser());
             source.registerCorsConfiguration("/**", config);

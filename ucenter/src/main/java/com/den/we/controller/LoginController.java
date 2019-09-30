@@ -40,11 +40,8 @@ public class LoginController {
         User user = iUserService.findByPhone(phoneNumber);
         String encryptPassword = new SimpleHash("md5", password, user.getSalt(), 2).toHex().toLowerCase();
 
-        request.getSession().getId();
-
-        request.getSession().setAttribute("session", user);
         AssertUtil.isTrue(user.getPassword().equals(encryptPassword), MessageCode.INCORRECT_PASSWORD);
-
+        request.getSession().setAttribute("session", user);
         return MessageRespResult.success();
     }
 }

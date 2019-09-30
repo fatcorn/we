@@ -56,6 +56,10 @@ public enum MessageCode {
     //用户模块=3
     MISSING_USER(30000, "MISSING_USER","用户不存在"),
     ACCOUNT_DISABLE(30001, "ACCOUNT_DISABLE", "该帐号已经被禁用"),
+
+    //社区模块=4
+    UPLOAD_FILE_NOT_BE_NULL(40000,"UPLOAD_FILE_NOT_BE_NULL","上传文件不能为空"),
+    UPLOAD_FAILED(40001, "UPLOAD_FAILED", "上传失败")
     ;
 
 
