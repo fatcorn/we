@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @since 2019-09-06 16:17:11
  */
 @Data
-public class Posts implements Serializable {
+public class Article implements Serializable {
     // id
     private Long id;
 
@@ -41,7 +41,7 @@ public class Posts implements Serializable {
     private Long creatorId;
 
     //帖子类型{，0：文字,1：图片, 2 : 音频，3：视频}
-    private Integer postType;
+    private Integer articleType;
 
     //创建时间
     private Date createTime;

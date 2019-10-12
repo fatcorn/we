@@ -1,7 +1,7 @@
 package com.den.we.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.den.we.entity.Posts;
+import com.den.we.entity.Article;
 
 /**
  * <p>
@@ -11,9 +11,9 @@ import com.den.we.entity.Posts;
  * @author fatKarin
  * @since 2019-05-30
  */
-public interface IPostsService extends IService<Posts> {
+public interface IArticleService extends IService<Article> {
 
     boolean addNewOne(Long communityId, String title, String content, Long creatorId);
 
-    boolean thumpUp(Long postsId);
+    boolean thumpUp(Long articleId);
 }

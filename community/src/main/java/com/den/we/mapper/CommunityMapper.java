@@ -2,7 +2,6 @@ package com.den.we.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.den.we.entity.Community;
-import com.den.we.entity.Posts;
 
 /**
  * <p>

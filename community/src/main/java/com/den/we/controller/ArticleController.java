@@ -3,7 +3,7 @@ package com.den.we.controller;
 import com.den.we.AssertUtil;
 import com.den.we.MessageCode;
 import com.den.we.MessageRespResult;
-import com.den.we.service.IPostsService;
+import com.den.we.service.IArticleService;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,11 +23,11 @@ import java.util.Date;
  * @date 2019/9/9 16:12
  */
 @RestController
-@RequestMapping("posts")
-public class PostsController {
+@RequestMapping("/Article")
+public class ArticleController {
 
     @Resource
-    private IPostsService iPostsService;
+    private IArticleService iArticleService;
 
     /**
      * 新增帖子
@@ -37,10 +37,10 @@ public class PostsController {
      * @param creatorId     创建者id
      * @return  MessageRespResult
      */
-    @PostMapping("/addNewPost")
-    public MessageRespResult addNewPost(Long communityId, String title, String content, Long creatorId) {
+    @PostMapping("/addNewArticle")
+    public MessageRespResult addNewArticle(Long communityId, String title, String content, Long creatorId) {
 
-        boolean result = iPostsService.addNewOne(communityId, title, content, creatorId);
+        boolean result = iArticleService.addNewOne(communityId, title, content, creatorId);
         AssertUtil.isTrue(result, MessageCode.ERROR);
         return MessageRespResult.success();
     }
@@ -71,12 +71,12 @@ public class PostsController {
 
     /**
      * 点赞操作
-     * @param postsId
+     * @param articleId 文章id
      * @return
      */
     @RequestMapping("/thumpUp")
-    public MessageRespResult thumpUp(Long postsId) {
-        boolean result = iPostsService.thumpUp(postsId);
+    public MessageRespResult thumpUp(Long articleId) {
+        boolean result = iArticleService.thumpUp(articleId);
         Assert.isTrue(result, "参数错误");
         return MessageRespResult.success();
     }

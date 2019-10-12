@@ -1,7 +1,7 @@
 package com.den.we.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.den.we.entity.Posts;
+import com.den.we.entity.Article;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 
@@ -14,8 +14,8 @@ import org.apache.ibatis.annotations.Update;
  * @since 2019-09-09
  */
 
-public interface PostsMapper extends BaseMapper<Posts> {
+public interface ArticleMapper extends BaseMapper<Article> {
 
-    @Update("update posts set support_num = support_num + 1 where id=#{postsId}")
-    int updateLikeCount(@Param("postsId") Long postsId);
+    @Update("update article set support_num = support_num + 1 where id=#{articleId}")
+    int updateLikeCount(@Param("articleId") Long articleId);
 }
