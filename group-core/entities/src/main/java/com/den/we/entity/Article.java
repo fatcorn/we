@@ -1,5 +1,6 @@
 package com.den.we.entity;
 
+import com.den.we.ArticleTypeEnum;
 import lombok.Data;
 
 import java.util.Date;
@@ -29,10 +30,10 @@ public class Article implements Serializable {
     private Integer commentNum;
 
     //支持人数
-    private Integer supportNum;
+    private Integer likeNum;
 
     //不支持人数,决定是否是水贴，触发删帖，排位
-    private Integer unsupportNum;
+    private Integer dislikeNum;
 
     //被举报次数，触发删帖，封号等操作
     private Integer reportedTime;
@@ -41,7 +42,7 @@ public class Article implements Serializable {
     private Long creatorId;
 
     //帖子类型{，0：文字,1：图片, 2 : 音频，3：视频}
-    private Integer articleType;
+    private ArticleTypeEnum articleType;
 
     //创建时间
     private Date createTime;
