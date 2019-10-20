@@ -1,6 +1,7 @@
 package com.den.we.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.den.we.ArticleTypeEnum;
 import com.den.we.entity.Article;
 import com.den.we.mapper.ArticleMapper;
 import com.den.we.service.IArticleService;
@@ -17,13 +18,14 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
 
     @Override
-    public boolean addNewOne(Long communityId, String title, String content, Long creatorId) {
+    public boolean addNewOne(Long communityId, String title, String content, Long creatorId, ArticleTypeEnum type) {
         Article article = new Article();
         article.setCommunityId(communityId);
         article.setTitle(title);
         article.setContent(content);
         article.setCreatorId(creatorId);
         article.setCreateTime(Calendar.getInstance().getTime());
+        article.setArticleType(type);
 
         int result = baseMapper.insert(article);
         return result > 0;
@@ -32,6 +34,12 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Override
     public boolean thumpUp(Long articleId) {
         int result = baseMapper.updateLikeCount(articleId);
+        return result > 0;
+    }
+
+    @Override
+    public boolean dislike(Long articleId) {
+        int result = baseMapper.updateDislikeCount(articleId);
         return result > 0;
     }
 

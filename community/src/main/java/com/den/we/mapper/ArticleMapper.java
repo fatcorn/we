@@ -16,6 +16,19 @@ import org.apache.ibatis.annotations.Update;
 
 public interface ArticleMapper extends BaseMapper<Article> {
 
-    @Update("update article set support_num = support_num + 1 where id=#{articleId}")
+    /**
+     * 更新点赞数
+     * @param articleId
+     * @return
+     */
+    @Update("update article set like_num = like_num + 1 where id=#{articleId}")
     int updateLikeCount(@Param("articleId") Long articleId);
+
+    /**
+     * 更新不推荐数
+     * @param articleId
+     * @return
+     */
+    @Update("update article set dislike_num = dislike_num + 1 where id=#{articleId}")
+    int updateDislikeCount(@Param("articleId") Long articleId);
 }

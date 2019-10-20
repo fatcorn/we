@@ -1,5 +1,6 @@
 package com.den.we.controller;
 
+import com.den.we.ArticleTypeEnum;
 import com.den.we.AssertUtil;
 import com.den.we.MessageCode;
 import com.den.we.MessageRespResult;
@@ -14,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -36,16 +36,45 @@ public class ArticleController {
      * @param title         标题
      * @param content       内容
      * @param creatorId     创建者id
-     * @return  MessageRespResult
+     * @return              MessageRespResult
      */
     @PostMapping("/addNewArticle")
-    public MessageRespResult addNewArticle(Long communityId, String title, String content, Long creatorId) {
+    public MessageRespResult addNewArticle(Long communityId, String title, String content, Long creatorId, ArticleTypeEnum type) {
 
-        boolean result = iArticleService.addNewOne(communityId, title, content, creatorId);
+        boolean result = iArticleService.addNewOne(communityId, title, content, creatorId, type);
         AssertUtil.isTrue(result, MessageCode.ERROR);
         return MessageRespResult.success();
     }
 
+    /**
+     * 点赞操作
+     * @param articleId     文章id
+     * @return              MessageRespResult
+     */
+    @PostMapping("/thumpUp")
+    public MessageRespResult thumpUp(Long articleId) {
+        boolean result = iArticleService.thumpUp(articleId);
+        Assert.isTrue(result, "参数错误");
+        return MessageRespResult.success();
+    }
+
+    /**
+     * 点赞操作
+     * @param  articleId     文章id
+     * @return              MessageRespResult
+     */
+    @PostMapping("/dislike")
+    public MessageRespResult dislike(Long articleId) {
+        boolean result = iArticleService.dislike(articleId);
+        Assert.isTrue(result, "参数错误");
+        return MessageRespResult.success();
+    }
+
+    /**
+     *
+     * @param file
+     * @return
+     */
     @RequestMapping("/uploadResources")
     public MessageRespResult uploadResources(@RequestParam(value = "file") MultipartFile file) {
         AssertUtil.notNull(file, MessageCode.UPLOAD_FILE_NOT_BE_NULL);
@@ -70,16 +99,6 @@ public class ArticleController {
         return MessageRespResult.success4Data(path);
     }
 
-    /**
-     * 点赞操作
-     * @param articleId 文章id
-     * @return
-     */
-    @RequestMapping("/thumpUp")
-    public MessageRespResult thumpUp(Long articleId) {
-        boolean result = iArticleService.thumpUp(articleId);
-        Assert.isTrue(result, "参数错误");
-        return MessageRespResult.success();
-    }
+
 
 }

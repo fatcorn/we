@@ -25,6 +25,15 @@ public class Comment implements Serializable {
     //{0:文字，1:图片，2语音，3：视频}
     private ArticleTypeEnum commentType;
 
+    // 支持人数
+    private Integer likeNum;
+
+    // 不支持人数
+    private Integer dislikeNum;
+
+    // 举报人数
+    private Integer reportedNum;
+
     //评论内容
     private String content;
 
