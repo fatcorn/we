@@ -5,7 +5,7 @@ import com.den.we.AssertUtil;
 import com.den.we.MessageCode;
 import com.den.we.MessageRespResult;
 import com.den.we.service.IArticleService;
-import org.springframework.util.Assert;
+import com.den.we.service.ICommentService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,11 +24,14 @@ import java.util.Date;
  * @date 2019/9/9 16:12
  */
 @RestController
-@RequestMapping("/Article")
+@RequestMapping("/article")
 public class ArticleController {
 
     @Resource
     private IArticleService iArticleService;
+
+    @Resource
+    private ICommentService iCommentService;
 
     /**
      * 新增帖子
@@ -41,8 +44,15 @@ public class ArticleController {
     @PostMapping("/addNewArticle")
     public MessageRespResult addNewArticle(Long communityId, String title, String content, Long creatorId, ArticleTypeEnum type) {
 
+        // 非空校验
+        AssertUtil.notNull(communityId, MessageCode.REQUIRED_PARAMETER);
+        AssertUtil.notNull(title, MessageCode.REQUIRED_PARAMETER);
+        AssertUtil.notNull(content, MessageCode.REQUIRED_PARAMETER);
+        AssertUtil.notNull(creatorId, MessageCode.REQUIRED_PARAMETER);
+        AssertUtil.notNull(type, MessageCode.REQUIRED_PARAMETER);
+
         boolean result = iArticleService.addNewOne(communityId, title, content, creatorId, type);
-        AssertUtil.isTrue(result, MessageCode.ERROR);
+        AssertUtil.isTrue(result, MessageCode.SQL_EXECUTE_FAILED);
         return MessageRespResult.success();
     }
 
@@ -53,20 +63,69 @@ public class ArticleController {
      */
     @PostMapping("/thumpUp")
     public MessageRespResult thumpUp(Long articleId) {
+        AssertUtil.notNull(articleId, MessageCode.REQUIRED_PARAMETER);
         boolean result = iArticleService.thumpUp(articleId);
-        Assert.isTrue(result, "参数错误");
+        AssertUtil.isTrue(result, MessageCode.SQL_EXECUTE_FAILED);
         return MessageRespResult.success();
     }
 
     /**
-     * 点赞操作
+     * 不推荐文章
      * @param  articleId     文章id
      * @return              MessageRespResult
      */
     @PostMapping("/dislike")
     public MessageRespResult dislike(Long articleId) {
+        AssertUtil.notNull(articleId, MessageCode.REQUIRED_PARAMETER);
         boolean result = iArticleService.dislike(articleId);
-        Assert.isTrue(result, "参数错误");
+        AssertUtil.isTrue(result, MessageCode.SQL_EXECUTE_FAILED);
+        return MessageRespResult.success();
+    }
+
+    /**
+     * 新增评论
+     * @param articleId     社区id
+     * @param content       内容
+     * @param creatorId     创建者id
+     * @param type          类型
+     * @return              MessageRespResult
+     */
+    @PostMapping("/comment/addNewComment")
+    public MessageRespResult addNewComment(Long articleId, String content, Long creatorId, ArticleTypeEnum type) {
+        // 非空校验
+        AssertUtil.notNull(articleId, MessageCode.REQUIRED_PARAMETER);
+        AssertUtil.notNull(content, MessageCode.REQUIRED_PARAMETER);
+        AssertUtil.notNull(creatorId, MessageCode.REQUIRED_PARAMETER);
+        AssertUtil.notNull(type, MessageCode.REQUIRED_PARAMETER);
+
+        boolean result = iCommentService.addNewOne(articleId,content,creatorId,type);
+        AssertUtil.isTrue(result, MessageCode.SQL_EXECUTE_FAILED);
+        return MessageRespResult.success();
+    }
+
+    /**
+     * 点赞评论
+     * @param CommentId     文章id
+     * @return              MessageRespResult
+     */
+    @PostMapping("/comment/thumpUpComment")
+    public MessageRespResult thumpUpComment(Long CommentId) {
+        AssertUtil.notNull(CommentId, MessageCode.REQUIRED_PARAMETER);
+        boolean result = iCommentService.thumpUp(CommentId);
+        AssertUtil.isTrue(result, MessageCode.SQL_EXECUTE_FAILED);
+        return MessageRespResult.success();
+    }
+
+    /**
+     * 不推荐文章
+     * @param  CommentId     文章id
+     * @return              MessageRespResult
+     */
+    @PostMapping("/comment/dislike")
+    public MessageRespResult dislikeComment(Long CommentId) {
+        AssertUtil.notNull(CommentId, MessageCode.REQUIRED_PARAMETER);
+        boolean result = iCommentService.dislike(CommentId);
+        AssertUtil.isTrue(result, MessageCode.SQL_EXECUTE_FAILED);
         return MessageRespResult.success();
     }
 
