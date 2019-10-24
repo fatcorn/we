@@ -29,7 +29,7 @@ public class AliYunOssUtil {
 
             // 貧勧利大送。
            // inputStream = new URL("https://www.aliyun.com/").openStream();
-            String objectName = DateUtil.dateToYYYYMMDDHHMMSS(new Date());
+            String objectName = DateUtil.dateToYYYYMMDDHHMMSS(new Date()) + "." + suffix;
             ossClient.putObject(bucketName, objectName, inputStream);
 
             //URL url = String.format("%s%s%s",endpoint, bucketName)
@@ -44,7 +44,7 @@ public class AliYunOssUtil {
     public static void main(String[] args) {
         try {
             InputStream in = new FileInputStream("C:/Users/maccura/Desktop/timg.jpg");
-            AliYunOssUtil.updatePicture(in, "");
+            AliYunOssUtil.updatePicture(in, "timg.jpg");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
