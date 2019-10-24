@@ -17,7 +17,7 @@ public class CodeGenerator {
 
     static final String srcPath = "/src/main/java";
 
-    static final String packagePath = "/com/dem/we";
+    static final String packagePath = "/com/den/we";
 
     static final String mapperPath = "/mapper";
 
@@ -32,44 +32,97 @@ public class CodeGenerator {
 
     public static void main(String[]  args) {
         // 实体类名称
-        String entityName = "Test";
+        String entityName = "Club";
         // 模块名称，代码文件生成地
-        String moduleName = "";
+        String moduleName = "/ucenter";
 
         String mapperTemplate = "package com.den.we.mapper;\n" +
                 "\n" +
                 "import com.baomidou.mybatisplus.core.mapper.BaseMapper;\n" +
+                "import com.den.we.entity." +entityName+ ";" +
                 "\n" +
                 "/**\n" +
                 " * <p>\n" +
-                " *  Mapper 接口\n" +
+                " *  " + entityName + "Mapper 接口\n" +
                 " * </p>\n" +
                 " *\n" +
                 " * @author fatKarin\n" +
-                " * @since 2019-09-09\n" +
+                " * @since " + DateUtil.getDate()+"\n" +
                 " */\n" +
                 "\n" +
-                "public interface" + entityName + "Mapper extends BaseMapper<" + entityName + "> {\n" +
+                "public interface " + entityName + "Mapper extends BaseMapper<" + entityName + "> {\n" +
                 "\n" +
                 "}";
-        byte[] utf8Byte = mapperTemplate.getBytes(StandardCharsets.UTF_8);
-        mapperTemplate = new String(utf8Byte, StandardCharsets.UTF_8);
 
+        String serviceTemplate ="package com.den.we.service;\n" +
+                "\n" +
+                "import com.baomidou.mybatisplus.extension.service.IService;\n" +
+                "import com.den.we.entity." + entityName + ";\n" +
+                "\n" +
+                "/**\n" +
+                " * <p>\n" +
+                " *  服务类\n" +
+                " * </p>\n" +
+                " *\n" +
+                " * @author fatKarin\n" +
+                " * @since " + DateUtil.getDate() + "\n" +
+                " */\n" +
+                "public interface I" + entityName +"Service extends IService<" + entityName + "> {\n" +
+                "\n" +
+                "}";
 
-        String filePath = "C:/Users/maccura/Desktop/" + entityName+ "Mapper" + classSuffix;
+        String serviceImplTemplate = "package com.den.we.service.impl;\n" +
+                "\n" +
+                "import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;\n" +
+                "import com.den.we.entity." + entityName+ ";\n" +
+                "import com.den.we.mapper." + entityName+ "Mapper;\n" +
+                "import com.den.we.service.I" + entityName+ "Service;\n" +
+                "import org.springframework.stereotype.Service;\n" +
+                "\n" +
+                "/**\n" +
+                " * @author fatKarin\n" +
+                " * @since " + DateUtil.getDate() + "\n" +
+                " */\n" +
+                "@Service\n" +
+                "public class " + entityName+ "ServiceImpl extends ServiceImpl<" + entityName+ "Mapper, " + entityName+ "> implements I" + entityName+ "Service {\n" +
+                "\n" +
+                "}";
+
+        String xmlTemplate = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
+                "<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\" >\n" +
+                "<mapper namespace=\"com.den.we.mapper." + entityName+ "Mapper\">\n" +
+                "</mapper>";
+
+        String mapperFilePath = projectPath + moduleName + srcPath + packagePath + mapperPath + "/" + entityName+ "Mapper" + classSuffix;
+
+        String serviceFilePath = projectPath + moduleName + srcPath + packagePath + servicePath + "/I" + entityName+ "Service" + classSuffix;
+
+        String serviceImplFilePath = projectPath + moduleName + srcPath + packagePath + serviceImplPath + "/" + entityName+ "ServiceImpl" + classSuffix;
+
+        String xmlFilePath = projectPath + moduleName + srcPath + packagePath + mapperPath + "/" + entityName+ "Mapper" + xmlSuffix;
 
         try {
-            File file = new File(filePath);
+            File file = new File(mapperFilePath);
             PrintStream ps = new PrintStream(new FileOutputStream(file));
             ps.println(mapperTemplate);// 往文件里写入字符串
+
+            file = new File(serviceFilePath);
+            ps = new PrintStream(new FileOutputStream(file));
+            ps.println(serviceTemplate);// 往文件里写入字符串
+
+            file = new File(serviceImplFilePath);
+            ps = new PrintStream(new FileOutputStream(file));
+            ps.println(serviceImplTemplate);// 往文件里写入字符串
+
+            file = new File(xmlFilePath);
+            ps = new PrintStream(new FileOutputStream(file));
+            ps.println(xmlTemplate);// 往文件里写入字符串
+
             ps.close();
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-
         System.out.println(System.getProperty("user.dir"));
-
     }
 }

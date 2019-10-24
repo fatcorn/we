@@ -9,7 +9,7 @@ import com.den.we.entity.Club;
  * </p>
  *
  * @author fatKarin
- * @since 2019-05-30
+ * @since 2019-10-24
  */
 public interface IClubService extends IService<Club> {
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author fatKarin
- * @date 2019/9/9 16:06
+ * @since 2019-10-24
  */
 @Service
 public class ClubServiceImpl extends ServiceImpl<ClubMapper, Club> implements IClubService {

@@ -5,11 +5,11 @@ import com.den.we.entity.Club;
 
 /**
  * <p>
- *  Mapper 接口
+ *  ClubMapper 接口
  * </p>
  *
  * @author fatKarin
- * @since 2019-09-09
+ * @since 2019-10-24
  */
 
 public interface ClubMapper extends BaseMapper<Club> {
