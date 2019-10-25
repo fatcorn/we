@@ -17,4 +17,7 @@ import org.apache.ibatis.annotations.Select;
 
 public interface InterestTagMapper extends BaseMapper<InterestTag> {
 
+    @Select("select * from interest_tag where tag_name=#{tagName} limit 1")
+    InterestTag findByTagName(@Param("tagName") String tagName);
+
 }

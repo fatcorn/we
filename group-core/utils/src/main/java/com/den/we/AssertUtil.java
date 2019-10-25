@@ -4,14 +4,14 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.lang.Nullable;
 
 /**
- * ¶ÏÑÔ¹¤¾ßÀà
+ * æ–­è¨€å·¥å…·ç±»
  * @author fatKarin
  * @date 2019/9/24 10:32
  */
 public class AssertUtil {
 
     /**
-     * ÅĞ¶Ï¶ÔÏóÊÇ·ñÎª¿Õ
+     * åˆ¤æ–­å¯¹è±¡æ˜¯å¦ä¸ºç©º
      */
     public static void notNull(@Nullable Object object, MessageCode messageCode) {
         if(object == null) {
@@ -20,7 +20,7 @@ public class AssertUtil {
     }
 
     /**
-     * ÅĞ¶Ï×Ö·û´®ÊÇ·ñÎª¿Õ
+     * åˆ¤æ–­å­—ç¬¦ä¸²æ˜¯å¦ä¸ºç©º
      * @param str
      * @param messageCode
      */
@@ -31,7 +31,7 @@ public class AssertUtil {
     }
 
     /**
-     * ÅĞ¶Ïtrue or false
+     * åˆ¤æ–­true or false
      * @param result
      * @param messageCode
      */

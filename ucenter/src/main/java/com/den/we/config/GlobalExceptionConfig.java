@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * È«¾ÖÒì³£´¦Àí
+ * å…¨å±€å¼‚å¸¸å¤„ç†
  * @author fatKarin
  * @date 2019/9/24 9:37
  */
@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 public class GlobalExceptionConfig {
 
     /**
-     * ·Ç·¨²ÎÊıÒì³£´¦Àí
-     * Îª¿Õ²ÎÊı£¬ÎŞĞ§²ÎÊı
+     * éæ³•å‚æ•°å¼‚å¸¸å¤„ç†
+     * ä¸ºç©ºå‚æ•°ï¼Œæ— æ•ˆå‚æ•°
      * @param exception
      * @return
      * @throws Exception

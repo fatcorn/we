@@ -1,18 +1,15 @@
 package com.den.we;
 
-import org.springframework.security.crypto.codec.Utf8;
-
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 
 /**
- * mybatis-plus mapper¡¢service¡¢serviceImpl ´úÂëÉú³É
+ * mybatis-plus mapperã€serviceã€serviceImpl ä»£ç ç”Ÿæˆ
  * @author fatKarin
  * @date 2019/10/24 16:34
  */
 public class CodeGenerator {
 
-    // ÏîÄ¿Â·¾¶
+    // é¡¹ç›®è·¯å¾„
     static final String projectPath = System.getProperty("user.dir");
 
     static final String srcPath = "/src/main/java";
@@ -31,9 +28,9 @@ public class CodeGenerator {
 
 
     public static void main(String[]  args) {
-        // ÊµÌåÀàÃû³Æ
-        String entityName = "Club";
-        // Ä£¿éÃû³Æ£¬´úÂëÎÄ¼şÉú³ÉµØ
+        // å®ä½“ç±»åç§°
+        String entityName = "UserInterestTag";
+        // æ¨¡å—åç§°ï¼Œä»£ç æ–‡ä»¶ç”Ÿæˆåœ°
         String moduleName = "/ucenter";
 
         String mapperTemplate = "package com.den.we.mapper;\n" +
@@ -43,7 +40,7 @@ public class CodeGenerator {
                 "\n" +
                 "/**\n" +
                 " * <p>\n" +
-                " *  " + entityName + "Mapper ½Ó¿Ú\n" +
+                " *  " + entityName + "Mapper æ¥å£\n" +
                 " * </p>\n" +
                 " *\n" +
                 " * @author fatKarin\n" +
@@ -61,7 +58,7 @@ public class CodeGenerator {
                 "\n" +
                 "/**\n" +
                 " * <p>\n" +
-                " *  ·şÎñÀà\n" +
+                " *  æœåŠ¡ç±»\n" +
                 " * </p>\n" +
                 " *\n" +
                 " * @author fatKarin\n" +
@@ -104,19 +101,19 @@ public class CodeGenerator {
         try {
             File file = new File(mapperFilePath);
             PrintStream ps = new PrintStream(new FileOutputStream(file));
-            ps.println(mapperTemplate);// ÍùÎÄ¼şÀïĞ´Èë×Ö·û´®
+            ps.println(mapperTemplate);// å¾€æ–‡ä»¶é‡Œå†™å…¥å­—ç¬¦ä¸²
 
             file = new File(serviceFilePath);
             ps = new PrintStream(new FileOutputStream(file));
-            ps.println(serviceTemplate);// ÍùÎÄ¼şÀïĞ´Èë×Ö·û´®
+            ps.println(serviceTemplate);// å¾€æ–‡ä»¶é‡Œå†™å…¥å­—ç¬¦ä¸²
 
             file = new File(serviceImplFilePath);
             ps = new PrintStream(new FileOutputStream(file));
-            ps.println(serviceImplTemplate);// ÍùÎÄ¼şÀïĞ´Èë×Ö·û´®
+            ps.println(serviceImplTemplate);// å¾€æ–‡ä»¶é‡Œå†™å…¥å­—ç¬¦ä¸²
 
             file = new File(xmlFilePath);
             ps = new PrintStream(new FileOutputStream(file));
-            ps.println(xmlTemplate);// ÍùÎÄ¼şÀïĞ´Èë×Ö·û´®
+            ps.println(xmlTemplate);// å¾€æ–‡ä»¶é‡Œå†™å…¥å­—ç¬¦ä¸²
 
             ps.close();
         } catch (FileNotFoundException e) {

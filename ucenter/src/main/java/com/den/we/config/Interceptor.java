@@ -1,6 +1,8 @@
 package com.den.we.config;
 
+import com.den.we.constant.SessionAttribute;
 import com.den.we.entity.User;
+import com.den.we.transform.AuthidUserInfo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.nio.charset.Charset;
 import java.util.List;
+
+import static com.den.we.constant.SessionAttribute.SESSION_USER_INFO;
 
 /**
  * 拦截器
@@ -61,7 +65,7 @@ class UserInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        User user = (User) request.getSession().getAttribute("session");
+        AuthidUserInfo user = (AuthidUserInfo) request.getSession().getAttribute(SESSION_USER_INFO);
         if (user != null) {
             return true;
         }

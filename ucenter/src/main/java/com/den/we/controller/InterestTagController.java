@@ -1,18 +1,16 @@
 package com.den.we.controller;
 
+import com.den.we.AssertUtil;
 import com.den.we.MessageCode;
 import com.den.we.MessageRespResult;
 import com.den.we.entity.InterestTag;
-import com.den.we.entity.TagNickName;
-import com.den.we.entity.User;
 import com.den.we.service.IInterestTagService;
-import com.den.we.service.ITagNickNameService;
-import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.den.we.transform.AuthidUserInfo;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+
+import static com.den.we.constant.SessionAttribute.SESSION_USER_INFO;
 
 /**
  *
@@ -29,19 +27,37 @@ public class InterestTagController {
 
     /**
      * 用户添加用户标签
-     * @param request
-     * @param interestTag
-     * @param nickName
+     * @param interestTag   标签名称
+     * @param comment       描述
+     * @return              MessageRespResult
+     */
+    @PostMapping("/customerAdd")
+    public MessageRespResult customerAdd(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo, String interestTag, String comment) {
+
+        AssertUtil.notEmpty(interestTag, MessageCode.REQUIRED_PARAMETER);
+
+        boolean result = interestTagService.addOneByUser(interestTag, comment, userInfo.getId());
+        AssertUtil.isTrue(result, MessageCode.ERROR);
+        return MessageRespResult.success();
+    }
+
+    /**
+     * 添加标签
+     * @param userInfo  userInfo
+     * @param tagName   标签信息
      * @return
      */
-    @RequestMapping("/customerAdd")
-    public MessageRespResult customerAdd(HttpServletRequest request, InterestTag interestTag, String nickName) {
+    @GetMapping("/interestInTag")
+    public MessageRespResult interestInTag(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo, String tagName) {
 
-        User user = (User) request.getSession().getAttribute("session");
-        interestTag.setUserId(user.getId());
+        AssertUtil.notEmpty(tagName, MessageCode.REQUIRED_PARAMETER);
 
-        boolean result = interestTagService.addOne(interestTag, nickName);
-        Assert.isTrue(result, "新增失败");
-        return MessageRespResult.success("新增成功");
+        // 查找标签是否存在
+        InterestTag interestTag = interestTagService.findTagByName(tagName);
+        AssertUtil.notNull(interestTag, MessageCode.ERROR);
+
+        boolean result =  interestTagService.interestInTag(userInfo.getId(), interestTag.getId());
+        AssertUtil.isTrue(result, MessageCode.ERROR);
+        return MessageRespResult.success();
     }
 }

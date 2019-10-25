@@ -26,8 +26,8 @@ x-auth-token: efa739f5-2092-4550-8a78-56a3e31bed7e
 ###新增用户标签
 POST http://localhost:9202/uc/tag/customerAdd
 Content-Type: application/x-www-form-urlencoded
-x-auth-token: 85903636-67b6-43e7-8967-81e0a9245b8b
+x-auth-token: 0cc8484b-7a41-4b07-98dc-30fb2995fd2d
 
-tagName=livepool fc&tagComment="利物浦足球俱乐部"&nickName="红军,利物浦"
+interestTag=旅游&comment="旅游"
 
 ###
