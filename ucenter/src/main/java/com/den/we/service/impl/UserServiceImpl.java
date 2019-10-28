@@ -1,6 +1,7 @@
 package com.den.we.service.impl;
 
 import com.den.we.IdWorkByTwitter;
+import com.den.we.Vo.UserInfoVo;
 import com.den.we.entity.User;
 import com.den.we.mapper.UserMapper;
 import com.den.we.service.IUserService;
@@ -40,7 +41,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return this.save(user);
     }
 
-    public User findByPhone(String phone) {
-        return this.baseMapper.findByPhone(phone);
+    @Override
+    public UserInfoVo getUserInfoVo(String retrieveInfo) {
+        return this.baseMapper.retrieveUser(retrieveInfo);
     }
+
+
 }

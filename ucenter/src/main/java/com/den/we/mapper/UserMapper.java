@@ -1,5 +1,6 @@
 package com.den.we.mapper;
 
+import com.den.we.Vo.UserInfoVo;
 import com.den.we.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
@@ -18,4 +19,6 @@ public interface UserMapper extends BaseMapper<User> {
 
     @Select("select * from user where mobile_phone = #{phone}")
     User findByPhone(@Param("phone") String Phone);
+
+    UserInfoVo retrieveUser(@Param("retrieveInfo") String retrieveInfo);
 }

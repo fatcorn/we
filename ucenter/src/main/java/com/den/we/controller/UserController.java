@@ -1,13 +1,19 @@
 package com.den.we.controller;
 
 
+import com.den.we.AssertUtil;
+import com.den.we.MessageCode;
 import com.den.we.MessageRespResult;
+import com.den.we.Vo.UserInfoVo;
 import com.den.we.entity.User;
 import com.den.we.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -21,10 +27,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
+    @Resource
     private IUserService userService;
 
-    public MessageRespResult register(User user) {
+    /**
+     * 检索用户
+     * @param retrieveInfo      检索信息，手机号或用户名
+     * @return                  UserInfoVo
+     */
+    @GetMapping("userRetrieve")
+    public MessageRespResult<UserInfoVo> userRetrieve(String retrieveInfo) {
+
+        AssertUtil.notEmpty(retrieveInfo, MessageCode.REQUIRED_PARAMETER);
+        UserInfoVo userInfoVo = userService.getUserInfoVo(retrieveInfo);
+        AssertUtil.notNull(userInfoVo, MessageCode.USER_NOT_EXIT);
+
+        return  MessageRespResult.success4Data(userInfoVo);
+    }
+
+    public MessageRespResult addFriend() {
         return MessageRespResult.success();
     }
 

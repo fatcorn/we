@@ -3,4 +3,10 @@
 
 <mapper namespace="com.den.we.mapper.UserMapper">
 
+
+    <select id="retrieveUser" resultType="com.den.we.Vo.UserInfoVo">
+        select mobile_phone mobilePhone, user_name userName, picture headUrl,country country, city city
+          from  user
+        where (mobile_phone = #{retrieveInfo} or user_name=#{retrieveInfo});
+    </select>
 </mapper>

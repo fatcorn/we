@@ -1,5 +1,6 @@
 package com.den.we.service;
 
+import com.den.we.Vo.UserInfoVo;
 import com.den.we.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -21,5 +22,6 @@ public interface IUserService extends IService<User> {
      */
     boolean register(String phone, String password);
 
-    User findByPhone(String phone);
+    UserInfoVo getUserInfoVo(String retrieveInfo);
+
 }
