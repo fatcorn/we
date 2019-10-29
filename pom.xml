@@ -15,6 +15,7 @@
         <module>group-core</module>
         <module>chat</module>
         <module>community</module>
+        <module>message-broker</module>
     </modules>
 
     <properties>

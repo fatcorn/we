@@ -26,7 +26,7 @@ public class InterestTagController {
 
 
     /**
-     * 用户添加用户标签
+     * 用户创建新标签
      * @param interestTag   标签名称
      * @param comment       描述
      * @return              MessageRespResult
