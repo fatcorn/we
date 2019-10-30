@@ -16,6 +16,7 @@
         <module>chat</module>
         <module>community</module>
         <module>message-broker</module>
+        <module>message-relay</module>
     </modules>
 
     <properties>
