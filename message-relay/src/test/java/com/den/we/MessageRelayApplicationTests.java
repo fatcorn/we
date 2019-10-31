@@ -29,27 +29,27 @@ public class MessageRelayApplicationTests {
 
     @Test
     public void mqttClientPublish() throws MqttException {
-        String broker = "tcp://localhost:1883";
-        String clientId = "relay";
-        //Use the memory persistence
-        MemoryPersistence persistence = new MemoryPersistence();
-
-        MqttClient sampleClient = new MqttClient(broker, clientId, persistence);
-
-        MqttConnectOptions connOpts = new MqttConnectOptions();
-        connOpts.setCleanSession(true);
-        System.out.println("Connecting to broker:" + broker);
-        sampleClient.connect(connOpts);
-        System.out.println("Connected");
-
-        String topic = "friend_request";
-        String content = "hello king";
-        int qos = 2;
-        System.out.println("Publishing message:" + content);
-        MqttMessage message = new MqttMessage(content.getBytes());
-        message.setQos(qos);
-        sampleClient.publish(topic, message);
-        System.out.println("Message published");
+//        String broker = "tcp://localhost:1883";
+//        String clientId = "relay";
+//        //Use the memory persistence
+//        MemoryPersistence persistence = new MemoryPersistence();
+//
+//        MqttClient sampleClient = new MqttClient(broker, clientId, persistence);
+//
+//        MqttConnectOptions connOpts = new MqttConnectOptions();
+//        connOpts.setCleanSession(true);
+//        System.out.println("Connecting to broker:" + broker);
+//        sampleClient.connect(connOpts);
+//        System.out.println("Connected");
+//
+//        String topic = "friend_request";
+//        String content = "hello king";
+//        int qos = 2;
+//        System.out.println("Publishing message:" + content);
+//        MqttMessage message = new MqttMessage(content.getBytes());
+//        message.setQos(qos);
+//        sampleClient.publish(topic, message);
+//        System.out.println("Message published");
 
     }
 
