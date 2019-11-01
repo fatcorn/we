@@ -1,20 +1,24 @@
 #注册接口
 
-POST http://localhost:9202/register/registerByPhone
+POST http://localhost:9202/uc/register/registerByPhone
 Content-Type: application/x-www-form-urlencoded
 
-phoneNumber=12345678&password=123456
+phoneNumber=13579&password=123456
 
 ###登录接口
-POST http://127.0.0.1:9201/UCENTER/uc/login/login
+POST http://127.0.0.1:9202//uc/login/login
 Content-Type: application/x-www-form-urlencoded
 
 phoneNumber=123456&password=123456
 
+### 添加好友
+GET http://localhost:9202/uc/user/newFriendRequest?retrieveInfo=13579
+Content-Type: application/x-www-form-urlencoded
+x-auth-token: 348c6c97-bb7f-46ca-8a30-d406c74ab465
 ###获取用户信息
 POST http://localhost:9202/uc/uCenter/getUserInfo
 Content-Type: application/x-www-form-urlencoded
-x-auth-token: 52c30f09-0a9b-4c81-97f5-5781fc364d26
+x-auth-token: 348c6c97-bb7f-46ca-8a30-d406c74ab465
 
 userId=1163690799456124930
 

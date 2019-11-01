@@ -63,7 +63,10 @@ public enum MessageCode {
     //社区模块=4
     UPLOAD_FILE_NOT_BE_NULL(40000,"UPLOAD_FILE_NOT_BE_NULL","上传文件不能为空"),
     UPLOAD_FAILED(40001, "UPLOAD_FAILED", "上传失败"),
-    SQL_EXECUTE_FAILED(40002, "SQL_EXECUTE_FAILED", "SQL执行失败")
+    SQL_EXECUTE_FAILED(40002, "SQL_EXECUTE_FAILED", "SQL执行失败"),
+
+    //消息推送模块=5
+    PUBLISH_FAILED(50000,"PUBLISH_FAILED", "发布消息失败"),
     ;
 
 

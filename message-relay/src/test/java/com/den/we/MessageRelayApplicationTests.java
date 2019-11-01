@@ -23,8 +23,7 @@ public class MessageRelayApplicationTests {
     }
 
     @Test
-    public void mqttPublish() {
-        service.publish();
+    public void mqttPublish() throws InterruptedException {
     }
 
     @Test

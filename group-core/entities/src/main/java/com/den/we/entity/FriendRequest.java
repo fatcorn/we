@@ -1,5 +1,6 @@
 package com.den.we.entity;
 
+import com.den.we.FriendRequestStatusEnum;
 import lombok.Data;
 
 import java.util.Date;
@@ -24,7 +25,7 @@ public class FriendRequest implements Serializable {
     private Long targetId;
 
     //状态{0:已拒绝,1:验证中,2:已接受,3:已过期}
-    private Integer status;
+    private FriendRequestStatusEnum status;
 
     //创建时间
     private Date createTime;

@@ -14,6 +14,11 @@ public class UserInfoVo {
     private String userName;
 
     /**
+     * 昵称
+     */
+    private String nickName;
+
+    /**
      * 手机号
      */
     private String mobilePhone;

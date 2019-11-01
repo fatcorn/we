@@ -4,6 +4,8 @@ import com.den.we.Vo.UserInfoVo;
 import com.den.we.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import javax.jws.soap.SOAPBinding;
+
 /**
  * <p>
  *  服务类
@@ -23,5 +25,9 @@ public interface IUserService extends IService<User> {
     boolean register(String phone, String password);
 
     UserInfoVo getUserInfoVo(String retrieveInfo);
+
+    User findByPhone(String phone);
+
+    User findByNameOrPhone(String phoneOrName);
 
 }

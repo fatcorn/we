@@ -7,5 +7,6 @@ package com.den.we.constant;
  * @date 2019/10/25 11:32
  */
 public class SessionAttribute {
+    // session 用户信息属性
     public static final String SESSION_USER_INFO = "USER_INFO";
 }

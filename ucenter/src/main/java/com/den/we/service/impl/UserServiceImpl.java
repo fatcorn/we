@@ -46,5 +46,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return this.baseMapper.retrieveUser(retrieveInfo);
     }
 
+    public User findByPhone(String phone) {
+        return this.baseMapper.findByPhone(phone);
+    }
 
+    @Override
+    public User findByNameOrPhone(String phoneOrName) {
+        return this.baseMapper.findByPhone(phoneOrName);
+    }
 }

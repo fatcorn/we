@@ -21,4 +21,6 @@ public interface UserMapper extends BaseMapper<User> {
     User findByPhone(@Param("phone") String Phone);
 
     UserInfoVo retrieveUser(@Param("retrieveInfo") String retrieveInfo);
+
+    User findByNameOrPhone(@Param("phoneOrName") String phoneOrName);
 }
