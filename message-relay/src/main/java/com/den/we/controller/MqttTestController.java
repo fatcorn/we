@@ -22,6 +22,12 @@ public class MqttTestController {
     @Resource
     private IPublishService publishService;
 
+    /**
+     * 发布消息
+     * @param topic
+     * @param payload
+     * @return
+     */
     @PostMapping("/publishMessage")
     public MessageRespResult publishMessage(String topic, String payload) {
 

@@ -9,4 +9,8 @@ package com.den.we.constant;
 public class SessionAttribute {
     // session 用户信息属性
     public static final String SESSION_USER_INFO = "USER_INFO";
+
+    // session 用户信息属性
+    public static final String SESSION_USER_INFO_FOR_GO = "USER_INFO";
+
 }

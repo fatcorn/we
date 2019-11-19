@@ -16,9 +16,9 @@ GET http://localhost:9202/uc/user/newFriendRequest?retrieveInfo=13579
 Content-Type: application/x-www-form-urlencoded
 x-auth-token: 348c6c97-bb7f-46ca-8a30-d406c74ab465
 ###获取用户信息
-POST http://localhost:9202/uc/uCenter/getUserInfo
+POST http://localhost:9202/uc/user/getUserInfo
 Content-Type: application/x-www-form-urlencoded
-x-auth-token: 348c6c97-bb7f-46ca-8a30-d406c74ab465
+x-auth-token: 99fd4044-3a90-4437-a1be-14967b1dcdf6
 
 userId=1163690799456124930
 
@@ -33,5 +33,12 @@ Content-Type: application/x-www-form-urlencoded
 x-auth-token: 0cc8484b-7a41-4b07-98dc-30fb2995fd2d
 
 interestTag=旅游&comment="旅游"
+
+###
+GET http://localhost:9202/uc/tag/interestInTag?tagName=旅游
+Content-Type: application/x-www-form-urlencoded
+x-auth-token: 6a713e35-1160-4963-884a-0d082d1c3458
+
+
 
 ###

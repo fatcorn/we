@@ -51,6 +51,12 @@ public class UserController {
         return  MessageRespResult.success4Data(userInfoVo);
     }
 
+    /**
+     * 添加好友请求
+     * @param userInfo      userInfo
+     * @param retrieveInfo  检索信息，手机号或用户名
+     * @return              MessageRespResult
+     */
     @GetMapping("/newFriendRequest")
     public MessageRespResult newFriendRequest(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo,String retrieveInfo) {
         AssertUtil.notEmpty(retrieveInfo, MessageCode.REQUIRED_PARAMETER);
@@ -66,8 +72,8 @@ public class UserController {
 
     /**
      * 获取用户信息
-     * @param userId
-     * @return
+     * @param userId    userId
+     * @return          MessageRespResult
      */
     @RequestMapping("/getUserInfo")
     public MessageRespResult<User> getUserInfo(String userId) {
