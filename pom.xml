@@ -11,7 +11,6 @@
     <modules>
         <module>group-server</module>
         <module>ucenter</module>
-        <module>codeGenerator</module>
         <module>group-core</module>
         <module>chat</module>
         <module>community</module>
@@ -26,6 +25,7 @@
         <mysql_version>6.0.6</mysql_version>
         <mybatis_plus_version>3.1.2</mybatis_plus_version>
         <lombok_version>1.18.4</lombok_version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>

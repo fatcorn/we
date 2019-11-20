@@ -17,7 +17,7 @@
     <artifactId>getway</artifactId>
 
     <properties>
-
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
        <!-- <spring-boot_version>2.0.3.RELEASE</spring-boot_version>-->
     </properties>
 
@@ -58,6 +58,7 @@
                 <configuration>
                     <source>8</source>
                     <target>8</target>
+                    <encoding>utf8</encoding>
                 </configuration>
             </plugin>
         </plugins>

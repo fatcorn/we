@@ -8,32 +8,32 @@ import java.net.URL;
 import java.util.Date;
 
 /**
- * °¢Àï¶ÔÏó´¢´æ¹¤¾ßÀà
+ * é˜¿é‡Œå¯¹è±¡å‚¨å­˜å·¥å…·ç±»
  * @author fatKarin
  * @date 2019/10/16 14:17
  */
 public class AliYunOssUtil {
 
     public static String updatePicture(InputStream inputStream, String suffix) {
-        // EndpointÒÔº¼ÖİÎªÀı£¬ÆäËüRegionÇë°´Êµ¼ÊÇé¿öÌîĞ´¡£
+        // Endpointä»¥æ­å·ä¸ºä¾‹ï¼Œå…¶å®ƒRegionè¯·æŒ‰å®é™…æƒ…å†µå¡«å†™ã€‚
         String endpoint = "oss-cn-chengdu.aliyuncs.com";
-// °¢ÀïÔÆÖ÷ÕËºÅAccessKeyÓµÓĞËùÓĞAPIµÄ·ÃÎÊÈ¨ÏŞ£¬·çÏÕºÜ¸ß¡£Ç¿ÁÒ½¨ÒéÄú´´½¨²¢Ê¹ÓÃRAMÕËºÅ½øĞĞAPI·ÃÎÊ»òÈÕ³£ÔËÎ¬£¬ÇëµÇÂ¼ https://ram.console.aliyun.com ´´½¨RAMÕËºÅ¡£
+// é˜¿é‡Œäº‘ä¸»è´¦å·AccessKeyæ‹¥æœ‰æ‰€æœ‰APIçš„è®¿é—®æƒé™ï¼Œé£é™©å¾ˆé«˜ã€‚å¼ºçƒˆå»ºè®®æ‚¨åˆ›å»ºå¹¶ä½¿ç”¨RAMè´¦å·è¿›è¡ŒAPIè®¿é—®æˆ–æ—¥å¸¸è¿ç»´ï¼Œè¯·ç™»å½• https://ram.console.aliyun.com åˆ›å»ºRAMè´¦å·ã€‚
         String accessKeyId = "LTAI4FisGyijRwBTYCpmdZAr";
         String accessKeySecret = "Pr4hmohCYNRvcrKj1Vy3YfvYdHZWYn";
 
         String bucketName = "same-test";
 
         try {
-            // ´´½¨OSSClientÊµÀı¡£
+            // åˆ›å»ºOSSClientå®ä¾‹ã€‚
             OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
 
-            // ÉÏ´«ÍøÂçÁ÷¡£
+            // ä¸Šä¼ ç½‘ç»œæµã€‚
            // inputStream = new URL("https://www.aliyun.com/").openStream();
             String objectName = DateUtil.dateToYYYYMMDDHHMMSS(new Date()) + "." + suffix;
             ossClient.putObject(bucketName, objectName, inputStream);
 
             //URL url = String.format("%s%s%s",endpoint, bucketName)
-            // ¹Ø±ÕOSSClient¡£
+            // å…³é—­OSSClientã€‚
             ossClient.shutdown();
         } catch (Exception e) {
             e.printStackTrace();

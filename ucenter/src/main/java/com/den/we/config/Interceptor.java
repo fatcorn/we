@@ -1,5 +1,7 @@
 package com.den.we.config;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.den.we.constant.SessionAttribute;
 import com.den.we.entity.User;
 import com.den.we.transform.AuthidUserInfo;
@@ -67,8 +69,8 @@ public class Interceptor implements WebMvcConfigurer {
 class UserInterceptor implements HandlerInterceptor {
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        AuthidUserInfo user = (AuthidUserInfo) request.getSession().getAttribute(SESSION_USER_INFO);
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler){
+        AuthidUserInfo user = JSON.parseObject(String.valueOf(request.getSession().getAttribute(SESSION_USER_INFO)),AuthidUserInfo.class);
         if (user != null) {
             return true;
         }

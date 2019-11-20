@@ -15,7 +15,7 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
- * 全局身份认证
+ * 鍏ㄥ眬韬唤璁よ瘉
  * @author fatKarin
  * @date 2019/9/30 11:08
  */
