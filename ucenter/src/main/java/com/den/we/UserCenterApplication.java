@@ -16,7 +16,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @MapperScan("com.den.we.mapper")
 @EnableEurekaClient
 @EnableFeignClients
-@EnableRedisHttpSession
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 3600 * 24 * 30)
 public class UserCenterApplication {
 
     public static void main(String[] args) {

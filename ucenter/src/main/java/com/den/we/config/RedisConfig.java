@@ -18,6 +18,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.*;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Configuration
@@ -72,20 +74,20 @@ public class RedisConfig extends CachingConfigurerSupport {
         return cacheManager;
     }
 
-    // 防止乱码，储存值变为键值对模式,获取回来时linkedHashMap,不易转换为Java对象,先关闭此种方式
+    // 使用自定义redis 序列化类
     @Bean
     public RedisSerializer<Object> springSessionDefaultRedisSerializer() {
-        return new CustomFastJsonRedisSerializer<Object>(Object.class);
+        return new CustomFastJsonRedisSerializer();
     }
 
-    class CustomFastJsonRedisSerializer<T> implements RedisSerializer<T> {
+    /**
+     * 自定义redis序列化类
+     * <function>序列化对象时加入 对象类信息,反序列化时利用反射解析对象<function/>
+     */
+    class CustomFastJsonRedisSerializer implements RedisSerializer<Object> {
 
         private FastJsonConfig fastJsonConfig = new FastJsonConfig();
-        private Class<T> type;
 
-        public CustomFastJsonRedisSerializer(Class<T> type) {
-            this.type = type;
-        }
 
         public FastJsonConfig getFastJsonConfig() {
             return this.fastJsonConfig;
@@ -95,22 +97,29 @@ public class RedisConfig extends CachingConfigurerSupport {
             this.fastJsonConfig = fastJsonConfig;
         }
 
-        public byte[] serialize(T t) throws SerializationException {
+        public byte[] serialize(Object t) throws SerializationException {
             if (t == null) {
                 return new byte[0];
             } else {
                 try {
-                    return JSON.toJSONBytes(t, this.fastJsonConfig.getSerializeConfig(), this.fastJsonConfig.getSerializerFeatures());
+                    Map<String,Object> objMap = new HashMap<>();
+                    objMap.put("objClass", t.getClass().getName());
+                    objMap.put("obj", t);
+
+                    return JSON.toJSONBytes(objMap, this.fastJsonConfig.getSerializeConfig(), this.fastJsonConfig.getSerializerFeatures());
                 } catch (Exception var3) {
                     throw new SerializationException("Could not serialize: " + var3.getMessage(), var3);
                 }
             }
         }
 
-        public T deserialize(byte[] bytes) throws SerializationException {
+        public Object deserialize(byte[] bytes) throws SerializationException {
             if (bytes != null && bytes.length != 0) {
                 try {
-                    return JSONObject.parseObject(bytes,type);
+                    Map objMap = JSON.parseObject(bytes,Map.class);
+                    Class<?> obj = Class.forName(String.valueOf(objMap.get("objClass")));
+                    return JSON.parseObject(String.valueOf(objMap.get("obj")),obj);
+
                 } catch (Exception var3) {
                     throw new SerializationException("Could not deserialize: " + var3.getMessage(), var3);
                 }

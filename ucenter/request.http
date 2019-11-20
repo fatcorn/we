@@ -37,7 +37,7 @@ interestTag=旅游&comment="旅游"
 ###
 GET http://localhost:9202/uc/tag/interestInTag?tagName=旅游
 Content-Type: application/x-www-form-urlencoded
-x-auth-token: 6a713e35-1160-4963-884a-0d082d1c3458
+x-auth-token: 5cdcaa69-3ae5-430a-a41c-061187634f3f
 
 
 
