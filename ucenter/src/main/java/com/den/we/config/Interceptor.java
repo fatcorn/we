@@ -18,6 +18,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
@@ -38,7 +39,7 @@ public class Interceptor implements WebMvcConfigurer {
      */
     @Bean
     public HttpMessageConverter<String> responseBodyConverter() {
-        return new StringHttpMessageConverter(Charset.forName("UTF-8"));
+        return new StringHttpMessageConverter(StandardCharsets.UTF_8);
     }
 
     @Override
@@ -70,7 +71,7 @@ class UserInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler){
-        AuthidUserInfo user = JSON.parseObject(String.valueOf(request.getSession().getAttribute(SESSION_USER_INFO)),AuthidUserInfo.class);
+        AuthidUserInfo user = (AuthidUserInfo)request.getSession().getAttribute(SESSION_USER_INFO);
         if (user != null) {
             return true;
         }

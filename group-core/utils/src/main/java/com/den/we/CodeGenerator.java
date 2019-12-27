@@ -10,21 +10,21 @@ import java.io.*;
 public class CodeGenerator {
 
     // 项目路径
-    static final String projectPath = System.getProperty("user.dir");
+    private static final String projectPath = System.getProperty("user.dir");
 
-    static final String srcPath = "/src/main/java";
+    private static final String srcPath = "/src/main/java";
 
-    static final String packagePath = "/com/den/we";
+    private static final String packagePath = "/com/den/we";
 
-    static final String mapperPath = "/mapper";
+    private static final String mapperPath = "/mapper";
 
-    static final String servicePath = "/service";
+    private static final String servicePath = "/service";
 
-    static final String serviceImplPath = "/service/impl";
+    private static final String serviceImplPath = "/service/impl";
 
-    static final String classSuffix = ".java";
+    private static final String classSuffix = ".java";
 
-    static final String xmlSuffix = ".xml";
+    private static final String xmlSuffix = ".xml";
 
 
     public static void main(String[]  args) {
