@@ -19,40 +19,25 @@ public final class chat {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string content = 1;</code>
-     * @return The content.
+     * <code>.test.message.Header header = 1;</code>
+     * @return Whether the header field is set.
      */
-    String getContent();
+    boolean hasHeader();
     /**
-     * <code>string content = 1;</code>
-     * @return The bytes for content.
+     * <code>.test.message.Header header = 1;</code>
+     * @return The header.
      */
-    com.google.protobuf.ByteString
-        getContentBytes();
+    com.den.we.chat.message.Header getHeader();
+    /**
+     * <code>.test.message.Header header = 1;</code>
+     */
+    com.den.we.chat.message.HeaderOrBuilder getHeaderOrBuilder();
 
     /**
-     * <code>string send_to = 2;</code>
-     * @return The sendTo.
+     * <code>bytes body = 2;</code>
+     * @return The body.
      */
-    String getSendTo();
-    /**
-     * <code>string send_to = 2;</code>
-     * @return The bytes for sendTo.
-     */
-    com.google.protobuf.ByteString
-        getSendToBytes();
-
-    /**
-     * <code>string send_from = 3;</code>
-     * @return The sendFrom.
-     */
-    String getSendFrom();
-    /**
-     * <code>string send_from = 3;</code>
-     * @return The bytes for sendFrom.
-     */
-    com.google.protobuf.ByteString
-        getSendFromBytes();
+    com.google.protobuf.ByteString getBody();
   }
   /**
    * Protobuf type {@code test.message}
@@ -67,19 +52,17 @@ public final class chat {
       super(builder);
     }
     private message() {
-      content_ = "";
-      sendTo_ = "";
-      sendFrom_ = "";
+      body_ = com.google.protobuf.ByteString.EMPTY;
     }
 
-    @Override
+    @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected Object newInstance(
+    protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
       return new message();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -90,7 +73,7 @@ public final class chat {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -103,21 +86,21 @@ public final class chat {
               done = true;
               break;
             case 10: {
-              String s = input.readStringRequireUtf8();
+              com.den.we.chat.message.Header.Builder subBuilder = null;
+              if (header_ != null) {
+                subBuilder = header_.toBuilder();
+              }
+              header_ = input.readMessage(com.den.we.chat.message.Header.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(header_);
+                header_ = subBuilder.buildPartial();
+              }
 
-              content_ = s;
               break;
             }
             case 18: {
-              String s = input.readStringRequireUtf8();
 
-              sendTo_ = s;
-              break;
-            }
-            case 26: {
-              String s = input.readStringRequireUtf8();
-
-              sendFrom_ = s;
+              body_ = input.readBytes();
               break;
             }
             default: {
@@ -141,127 +124,2408 @@ public final class chat {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return chat.internal_static_test_message_descriptor;
+      return com.den.we.chat.internal_static_test_message_descriptor;
     }
 
-    @Override
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return chat.internal_static_test_message_fieldAccessorTable
+      return com.den.we.chat.internal_static_test_message_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              message.class, Builder.class);
+              com.den.we.chat.message.class, com.den.we.chat.message.Builder.class);
     }
 
-    public static final int CONTENT_FIELD_NUMBER = 1;
-    private volatile Object content_;
-    /**
-     * <code>string content = 1;</code>
-     * @return The content.
-     */
-    public String getContent() {
-      Object ref = content_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        content_ = s;
-        return s;
-      }
+    public interface chat_messageOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:test.message.chat_message)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string content = 1;</code>
+       * @return The content.
+       */
+      java.lang.String getContent();
+      /**
+       * <code>string content = 1;</code>
+       * @return The bytes for content.
+       */
+      com.google.protobuf.ByteString
+          getContentBytes();
+
+      /**
+       * <code>string send_to = 2;</code>
+       * @return The sendTo.
+       */
+      java.lang.String getSendTo();
+      /**
+       * <code>string send_to = 2;</code>
+       * @return The bytes for sendTo.
+       */
+      com.google.protobuf.ByteString
+          getSendToBytes();
+
+      /**
+       * <code>string send_from = 3;</code>
+       * @return The sendFrom.
+       */
+      java.lang.String getSendFrom();
+      /**
+       * <code>string send_from = 3;</code>
+       * @return The bytes for sendFrom.
+       */
+      com.google.protobuf.ByteString
+          getSendFromBytes();
     }
     /**
-     * <code>string content = 1;</code>
-     * @return The bytes for content.
+     * Protobuf type {@code test.message.chat_message}
      */
-    public com.google.protobuf.ByteString
-        getContentBytes() {
-      Object ref = content_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
-        content_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
+    public  static final class chat_message extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:test.message.chat_message)
+        chat_messageOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use chat_message.newBuilder() to construct.
+      private chat_message(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
       }
+      private chat_message() {
+        content_ = "";
+        sendTo_ = "";
+        sendFrom_ = "";
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new chat_message();
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private chat_message(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                content_ = s;
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                sendTo_ = s;
+                break;
+              }
+              case 26: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                sendFrom_ = s;
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.den.we.chat.internal_static_test_message_chat_message_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.den.we.chat.internal_static_test_message_chat_message_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.den.we.chat.message.chat_message.class, com.den.we.chat.message.chat_message.Builder.class);
+      }
+
+      public static final int CONTENT_FIELD_NUMBER = 1;
+      private volatile java.lang.Object content_;
+      /**
+       * <code>string content = 1;</code>
+       * @return The content.
+       */
+      public java.lang.String getContent() {
+        java.lang.Object ref = content_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          content_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string content = 1;</code>
+       * @return The bytes for content.
+       */
+      public com.google.protobuf.ByteString
+          getContentBytes() {
+        java.lang.Object ref = content_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          content_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int SEND_TO_FIELD_NUMBER = 2;
+      private volatile java.lang.Object sendTo_;
+      /**
+       * <code>string send_to = 2;</code>
+       * @return The sendTo.
+       */
+      public java.lang.String getSendTo() {
+        java.lang.Object ref = sendTo_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sendTo_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string send_to = 2;</code>
+       * @return The bytes for sendTo.
+       */
+      public com.google.protobuf.ByteString
+          getSendToBytes() {
+        java.lang.Object ref = sendTo_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sendTo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int SEND_FROM_FIELD_NUMBER = 3;
+      private volatile java.lang.Object sendFrom_;
+      /**
+       * <code>string send_from = 3;</code>
+       * @return The sendFrom.
+       */
+      public java.lang.String getSendFrom() {
+        java.lang.Object ref = sendFrom_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sendFrom_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string send_from = 3;</code>
+       * @return The bytes for sendFrom.
+       */
+      public com.google.protobuf.ByteString
+          getSendFromBytes() {
+        java.lang.Object ref = sendFrom_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sendFrom_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!getContentBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, content_);
+        }
+        if (!getSendToBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, sendTo_);
+        }
+        if (!getSendFromBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sendFrom_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!getContentBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, content_);
+        }
+        if (!getSendToBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, sendTo_);
+        }
+        if (!getSendFromBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sendFrom_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.den.we.chat.message.chat_message)) {
+          return super.equals(obj);
+        }
+        com.den.we.chat.message.chat_message other = (com.den.we.chat.message.chat_message) obj;
+
+        if (!getContent()
+            .equals(other.getContent())) return false;
+        if (!getSendTo()
+            .equals(other.getSendTo())) return false;
+        if (!getSendFrom()
+            .equals(other.getSendFrom())) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + CONTENT_FIELD_NUMBER;
+        hash = (53 * hash) + getContent().hashCode();
+        hash = (37 * hash) + SEND_TO_FIELD_NUMBER;
+        hash = (53 * hash) + getSendTo().hashCode();
+        hash = (37 * hash) + SEND_FROM_FIELD_NUMBER;
+        hash = (53 * hash) + getSendFrom().hashCode();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.den.we.chat.message.chat_message parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.den.we.chat.message.chat_message parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.den.we.chat.message.chat_message parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.den.we.chat.message.chat_message parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.den.we.chat.message.chat_message parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.den.we.chat.message.chat_message parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.den.we.chat.message.chat_message parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.den.we.chat.message.chat_message parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.den.we.chat.message.chat_message parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static com.den.we.chat.message.chat_message parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.den.we.chat.message.chat_message parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.den.we.chat.message.chat_message parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.den.we.chat.message.chat_message prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code test.message.chat_message}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:test.message.chat_message)
+          com.den.we.chat.message.chat_messageOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.den.we.chat.internal_static_test_message_chat_message_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.den.we.chat.internal_static_test_message_chat_message_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.den.we.chat.message.chat_message.class, com.den.we.chat.message.chat_message.Builder.class);
+        }
+
+        // Construct using com.den.we.chat.message.chat_message.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          content_ = "";
+
+          sendTo_ = "";
+
+          sendFrom_ = "";
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.den.we.chat.internal_static_test_message_chat_message_descriptor;
+        }
+
+        @java.lang.Override
+        public com.den.we.chat.message.chat_message getDefaultInstanceForType() {
+          return com.den.we.chat.message.chat_message.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.den.we.chat.message.chat_message build() {
+          com.den.we.chat.message.chat_message result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.den.we.chat.message.chat_message buildPartial() {
+          com.den.we.chat.message.chat_message result = new com.den.we.chat.message.chat_message(this);
+          result.content_ = content_;
+          result.sendTo_ = sendTo_;
+          result.sendFrom_ = sendFrom_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.den.we.chat.message.chat_message) {
+            return mergeFrom((com.den.we.chat.message.chat_message)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.den.we.chat.message.chat_message other) {
+          if (other == com.den.we.chat.message.chat_message.getDefaultInstance()) return this;
+          if (!other.getContent().isEmpty()) {
+            content_ = other.content_;
+            onChanged();
+          }
+          if (!other.getSendTo().isEmpty()) {
+            sendTo_ = other.sendTo_;
+            onChanged();
+          }
+          if (!other.getSendFrom().isEmpty()) {
+            sendFrom_ = other.sendFrom_;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.den.we.chat.message.chat_message parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.den.we.chat.message.chat_message) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private java.lang.Object content_ = "";
+        /**
+         * <code>string content = 1;</code>
+         * @return The content.
+         */
+        public java.lang.String getContent() {
+          java.lang.Object ref = content_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            content_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string content = 1;</code>
+         * @return The bytes for content.
+         */
+        public com.google.protobuf.ByteString
+            getContentBytes() {
+          java.lang.Object ref = content_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            content_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string content = 1;</code>
+         * @param value The content to set.
+         * @return This builder for chaining.
+         */
+        public Builder setContent(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          content_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string content = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearContent() {
+          
+          content_ = getDefaultInstance().getContent();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string content = 1;</code>
+         * @param value The bytes for content to set.
+         * @return This builder for chaining.
+         */
+        public Builder setContentBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          content_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object sendTo_ = "";
+        /**
+         * <code>string send_to = 2;</code>
+         * @return The sendTo.
+         */
+        public java.lang.String getSendTo() {
+          java.lang.Object ref = sendTo_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            sendTo_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string send_to = 2;</code>
+         * @return The bytes for sendTo.
+         */
+        public com.google.protobuf.ByteString
+            getSendToBytes() {
+          java.lang.Object ref = sendTo_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            sendTo_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string send_to = 2;</code>
+         * @param value The sendTo to set.
+         * @return This builder for chaining.
+         */
+        public Builder setSendTo(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          sendTo_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string send_to = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearSendTo() {
+          
+          sendTo_ = getDefaultInstance().getSendTo();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string send_to = 2;</code>
+         * @param value The bytes for sendTo to set.
+         * @return This builder for chaining.
+         */
+        public Builder setSendToBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          sendTo_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object sendFrom_ = "";
+        /**
+         * <code>string send_from = 3;</code>
+         * @return The sendFrom.
+         */
+        public java.lang.String getSendFrom() {
+          java.lang.Object ref = sendFrom_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            sendFrom_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string send_from = 3;</code>
+         * @return The bytes for sendFrom.
+         */
+        public com.google.protobuf.ByteString
+            getSendFromBytes() {
+          java.lang.Object ref = sendFrom_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            sendFrom_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string send_from = 3;</code>
+         * @param value The sendFrom to set.
+         * @return This builder for chaining.
+         */
+        public Builder setSendFrom(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          sendFrom_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string send_from = 3;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearSendFrom() {
+          
+          sendFrom_ = getDefaultInstance().getSendFrom();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string send_from = 3;</code>
+         * @param value The bytes for sendFrom to set.
+         * @return This builder for chaining.
+         */
+        public Builder setSendFromBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          sendFrom_ = value;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:test.message.chat_message)
+      }
+
+      // @@protoc_insertion_point(class_scope:test.message.chat_message)
+      private static final com.den.we.chat.message.chat_message DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.den.we.chat.message.chat_message();
+      }
+
+      public static com.den.we.chat.message.chat_message getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<chat_message>
+          PARSER = new com.google.protobuf.AbstractParser<chat_message>() {
+        @java.lang.Override
+        public chat_message parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new chat_message(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<chat_message> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<chat_message> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.den.we.chat.message.chat_message getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
     }
 
-    public static final int SEND_TO_FIELD_NUMBER = 2;
-    private volatile Object sendTo_;
-    /**
-     * <code>string send_to = 2;</code>
-     * @return The sendTo.
-     */
-    public String getSendTo() {
-      Object ref = sendTo_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        sendTo_ = s;
-        return s;
-      }
+    public interface friend_requestOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:test.message.friend_request)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string apply_from = 1;</code>
+       * @return The applyFrom.
+       */
+      java.lang.String getApplyFrom();
+      /**
+       * <code>string apply_from = 1;</code>
+       * @return The bytes for applyFrom.
+       */
+      com.google.protobuf.ByteString
+          getApplyFromBytes();
+
+      /**
+       * <code>string apply_to = 2;</code>
+       * @return The applyTo.
+       */
+      java.lang.String getApplyTo();
+      /**
+       * <code>string apply_to = 2;</code>
+       * @return The bytes for applyTo.
+       */
+      com.google.protobuf.ByteString
+          getApplyToBytes();
     }
     /**
-     * <code>string send_to = 2;</code>
-     * @return The bytes for sendTo.
+     * Protobuf type {@code test.message.friend_request}
      */
-    public com.google.protobuf.ByteString
-        getSendToBytes() {
-      Object ref = sendTo_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
-        sendTo_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
+    public  static final class friend_request extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:test.message.friend_request)
+        friend_requestOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use friend_request.newBuilder() to construct.
+      private friend_request(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
       }
+      private friend_request() {
+        applyFrom_ = "";
+        applyTo_ = "";
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new friend_request();
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private friend_request(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                applyFrom_ = s;
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                applyTo_ = s;
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.den.we.chat.internal_static_test_message_friend_request_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.den.we.chat.internal_static_test_message_friend_request_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.den.we.chat.message.friend_request.class, com.den.we.chat.message.friend_request.Builder.class);
+      }
+
+      public static final int APPLY_FROM_FIELD_NUMBER = 1;
+      private volatile java.lang.Object applyFrom_;
+      /**
+       * <code>string apply_from = 1;</code>
+       * @return The applyFrom.
+       */
+      public java.lang.String getApplyFrom() {
+        java.lang.Object ref = applyFrom_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          applyFrom_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string apply_from = 1;</code>
+       * @return The bytes for applyFrom.
+       */
+      public com.google.protobuf.ByteString
+          getApplyFromBytes() {
+        java.lang.Object ref = applyFrom_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          applyFrom_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int APPLY_TO_FIELD_NUMBER = 2;
+      private volatile java.lang.Object applyTo_;
+      /**
+       * <code>string apply_to = 2;</code>
+       * @return The applyTo.
+       */
+      public java.lang.String getApplyTo() {
+        java.lang.Object ref = applyTo_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          applyTo_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string apply_to = 2;</code>
+       * @return The bytes for applyTo.
+       */
+      public com.google.protobuf.ByteString
+          getApplyToBytes() {
+        java.lang.Object ref = applyTo_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          applyTo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!getApplyFromBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, applyFrom_);
+        }
+        if (!getApplyToBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, applyTo_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!getApplyFromBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, applyFrom_);
+        }
+        if (!getApplyToBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, applyTo_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.den.we.chat.message.friend_request)) {
+          return super.equals(obj);
+        }
+        com.den.we.chat.message.friend_request other = (com.den.we.chat.message.friend_request) obj;
+
+        if (!getApplyFrom()
+            .equals(other.getApplyFrom())) return false;
+        if (!getApplyTo()
+            .equals(other.getApplyTo())) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + APPLY_FROM_FIELD_NUMBER;
+        hash = (53 * hash) + getApplyFrom().hashCode();
+        hash = (37 * hash) + APPLY_TO_FIELD_NUMBER;
+        hash = (53 * hash) + getApplyTo().hashCode();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.den.we.chat.message.friend_request parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.den.we.chat.message.friend_request parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.den.we.chat.message.friend_request parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.den.we.chat.message.friend_request parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.den.we.chat.message.friend_request parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.den.we.chat.message.friend_request parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.den.we.chat.message.friend_request parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.den.we.chat.message.friend_request parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.den.we.chat.message.friend_request parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static com.den.we.chat.message.friend_request parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.den.we.chat.message.friend_request parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.den.we.chat.message.friend_request parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.den.we.chat.message.friend_request prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code test.message.friend_request}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:test.message.friend_request)
+          com.den.we.chat.message.friend_requestOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.den.we.chat.internal_static_test_message_friend_request_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.den.we.chat.internal_static_test_message_friend_request_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.den.we.chat.message.friend_request.class, com.den.we.chat.message.friend_request.Builder.class);
+        }
+
+        // Construct using com.den.we.chat.message.friend_request.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          applyFrom_ = "";
+
+          applyTo_ = "";
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.den.we.chat.internal_static_test_message_friend_request_descriptor;
+        }
+
+        @java.lang.Override
+        public com.den.we.chat.message.friend_request getDefaultInstanceForType() {
+          return com.den.we.chat.message.friend_request.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.den.we.chat.message.friend_request build() {
+          com.den.we.chat.message.friend_request result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.den.we.chat.message.friend_request buildPartial() {
+          com.den.we.chat.message.friend_request result = new com.den.we.chat.message.friend_request(this);
+          result.applyFrom_ = applyFrom_;
+          result.applyTo_ = applyTo_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.den.we.chat.message.friend_request) {
+            return mergeFrom((com.den.we.chat.message.friend_request)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.den.we.chat.message.friend_request other) {
+          if (other == com.den.we.chat.message.friend_request.getDefaultInstance()) return this;
+          if (!other.getApplyFrom().isEmpty()) {
+            applyFrom_ = other.applyFrom_;
+            onChanged();
+          }
+          if (!other.getApplyTo().isEmpty()) {
+            applyTo_ = other.applyTo_;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.den.we.chat.message.friend_request parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.den.we.chat.message.friend_request) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private java.lang.Object applyFrom_ = "";
+        /**
+         * <code>string apply_from = 1;</code>
+         * @return The applyFrom.
+         */
+        public java.lang.String getApplyFrom() {
+          java.lang.Object ref = applyFrom_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            applyFrom_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string apply_from = 1;</code>
+         * @return The bytes for applyFrom.
+         */
+        public com.google.protobuf.ByteString
+            getApplyFromBytes() {
+          java.lang.Object ref = applyFrom_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            applyFrom_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string apply_from = 1;</code>
+         * @param value The applyFrom to set.
+         * @return This builder for chaining.
+         */
+        public Builder setApplyFrom(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          applyFrom_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string apply_from = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearApplyFrom() {
+          
+          applyFrom_ = getDefaultInstance().getApplyFrom();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string apply_from = 1;</code>
+         * @param value The bytes for applyFrom to set.
+         * @return This builder for chaining.
+         */
+        public Builder setApplyFromBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          applyFrom_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object applyTo_ = "";
+        /**
+         * <code>string apply_to = 2;</code>
+         * @return The applyTo.
+         */
+        public java.lang.String getApplyTo() {
+          java.lang.Object ref = applyTo_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            applyTo_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string apply_to = 2;</code>
+         * @return The bytes for applyTo.
+         */
+        public com.google.protobuf.ByteString
+            getApplyToBytes() {
+          java.lang.Object ref = applyTo_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            applyTo_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string apply_to = 2;</code>
+         * @param value The applyTo to set.
+         * @return This builder for chaining.
+         */
+        public Builder setApplyTo(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          applyTo_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string apply_to = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearApplyTo() {
+          
+          applyTo_ = getDefaultInstance().getApplyTo();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string apply_to = 2;</code>
+         * @param value The bytes for applyTo to set.
+         * @return This builder for chaining.
+         */
+        public Builder setApplyToBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          applyTo_ = value;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:test.message.friend_request)
+      }
+
+      // @@protoc_insertion_point(class_scope:test.message.friend_request)
+      private static final com.den.we.chat.message.friend_request DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.den.we.chat.message.friend_request();
+      }
+
+      public static com.den.we.chat.message.friend_request getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<friend_request>
+          PARSER = new com.google.protobuf.AbstractParser<friend_request>() {
+        @java.lang.Override
+        public friend_request parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new friend_request(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<friend_request> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<friend_request> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.den.we.chat.message.friend_request getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
     }
 
-    public static final int SEND_FROM_FIELD_NUMBER = 3;
-    private volatile Object sendFrom_;
-    /**
-     * <code>string send_from = 3;</code>
-     * @return The sendFrom.
-     */
-    public String getSendFrom() {
-      Object ref = sendFrom_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        sendFrom_ = s;
-        return s;
-      }
+    public interface HeaderOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:test.message.Header)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <pre>
+       * 消息类型
+       * </pre>
+       *
+       * <code>float protocol_version = 1;</code>
+       * @return The protocolVersion.
+       */
+      float getProtocolVersion();
+
+      /**
+       * <pre>
+       * 消息类型
+       * </pre>
+       *
+       * <code>string message_type = 2;</code>
+       * @return The messageType.
+       */
+      java.lang.String getMessageType();
+      /**
+       * <pre>
+       * 消息类型
+       * </pre>
+       *
+       * <code>string message_type = 2;</code>
+       * @return The bytes for messageType.
+       */
+      com.google.protobuf.ByteString
+          getMessageTypeBytes();
+
+      /**
+       * <pre>
+       * 消息长度 
+       * </pre>
+       *
+       * <code>int32 length = 3;</code>
+       * @return The length.
+       */
+      int getLength();
     }
     /**
-     * <code>string send_from = 3;</code>
-     * @return The bytes for sendFrom.
+     * Protobuf type {@code test.message.Header}
      */
-    public com.google.protobuf.ByteString
-        getSendFromBytes() {
-      Object ref = sendFrom_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
-        sendFrom_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
+    public  static final class Header extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:test.message.Header)
+        HeaderOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use Header.newBuilder() to construct.
+      private Header(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
       }
+      private Header() {
+        messageType_ = "";
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new Header();
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private Header(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 13: {
+
+                protocolVersion_ = input.readFloat();
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                messageType_ = s;
+                break;
+              }
+              case 24: {
+
+                length_ = input.readInt32();
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.den.we.chat.internal_static_test_message_Header_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.den.we.chat.internal_static_test_message_Header_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.den.we.chat.message.Header.class, com.den.we.chat.message.Header.Builder.class);
+      }
+
+      public static final int PROTOCOL_VERSION_FIELD_NUMBER = 1;
+      private float protocolVersion_;
+      /**
+       * <pre>
+       * 消息类型
+       * </pre>
+       *
+       * <code>float protocol_version = 1;</code>
+       * @return The protocolVersion.
+       */
+      public float getProtocolVersion() {
+        return protocolVersion_;
+      }
+
+      public static final int MESSAGE_TYPE_FIELD_NUMBER = 2;
+      private volatile java.lang.Object messageType_;
+      /**
+       * <pre>
+       * 消息类型
+       * </pre>
+       *
+       * <code>string message_type = 2;</code>
+       * @return The messageType.
+       */
+      public java.lang.String getMessageType() {
+        java.lang.Object ref = messageType_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          messageType_ = s;
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * 消息类型
+       * </pre>
+       *
+       * <code>string message_type = 2;</code>
+       * @return The bytes for messageType.
+       */
+      public com.google.protobuf.ByteString
+          getMessageTypeBytes() {
+        java.lang.Object ref = messageType_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          messageType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int LENGTH_FIELD_NUMBER = 3;
+      private int length_;
+      /**
+       * <pre>
+       * 消息长度 
+       * </pre>
+       *
+       * <code>int32 length = 3;</code>
+       * @return The length.
+       */
+      public int getLength() {
+        return length_;
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (protocolVersion_ != 0F) {
+          output.writeFloat(1, protocolVersion_);
+        }
+        if (!getMessageTypeBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, messageType_);
+        }
+        if (length_ != 0) {
+          output.writeInt32(3, length_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (protocolVersion_ != 0F) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeFloatSize(1, protocolVersion_);
+        }
+        if (!getMessageTypeBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, messageType_);
+        }
+        if (length_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(3, length_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.den.we.chat.message.Header)) {
+          return super.equals(obj);
+        }
+        com.den.we.chat.message.Header other = (com.den.we.chat.message.Header) obj;
+
+        if (java.lang.Float.floatToIntBits(getProtocolVersion())
+            != java.lang.Float.floatToIntBits(
+                other.getProtocolVersion())) return false;
+        if (!getMessageType()
+            .equals(other.getMessageType())) return false;
+        if (getLength()
+            != other.getLength()) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + PROTOCOL_VERSION_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getProtocolVersion());
+        hash = (37 * hash) + MESSAGE_TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + getMessageType().hashCode();
+        hash = (37 * hash) + LENGTH_FIELD_NUMBER;
+        hash = (53 * hash) + getLength();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.den.we.chat.message.Header parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.den.we.chat.message.Header parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.den.we.chat.message.Header parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.den.we.chat.message.Header parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.den.we.chat.message.Header parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.den.we.chat.message.Header parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.den.we.chat.message.Header parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.den.we.chat.message.Header parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.den.we.chat.message.Header parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static com.den.we.chat.message.Header parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.den.we.chat.message.Header parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.den.we.chat.message.Header parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.den.we.chat.message.Header prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code test.message.Header}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:test.message.Header)
+          com.den.we.chat.message.HeaderOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.den.we.chat.internal_static_test_message_Header_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.den.we.chat.internal_static_test_message_Header_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.den.we.chat.message.Header.class, com.den.we.chat.message.Header.Builder.class);
+        }
+
+        // Construct using com.den.we.chat.message.Header.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          protocolVersion_ = 0F;
+
+          messageType_ = "";
+
+          length_ = 0;
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.den.we.chat.internal_static_test_message_Header_descriptor;
+        }
+
+        @java.lang.Override
+        public com.den.we.chat.message.Header getDefaultInstanceForType() {
+          return com.den.we.chat.message.Header.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.den.we.chat.message.Header build() {
+          com.den.we.chat.message.Header result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.den.we.chat.message.Header buildPartial() {
+          com.den.we.chat.message.Header result = new com.den.we.chat.message.Header(this);
+          result.protocolVersion_ = protocolVersion_;
+          result.messageType_ = messageType_;
+          result.length_ = length_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.den.we.chat.message.Header) {
+            return mergeFrom((com.den.we.chat.message.Header)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.den.we.chat.message.Header other) {
+          if (other == com.den.we.chat.message.Header.getDefaultInstance()) return this;
+          if (other.getProtocolVersion() != 0F) {
+            setProtocolVersion(other.getProtocolVersion());
+          }
+          if (!other.getMessageType().isEmpty()) {
+            messageType_ = other.messageType_;
+            onChanged();
+          }
+          if (other.getLength() != 0) {
+            setLength(other.getLength());
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.den.we.chat.message.Header parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.den.we.chat.message.Header) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private float protocolVersion_ ;
+        /**
+         * <pre>
+         * 消息类型
+         * </pre>
+         *
+         * <code>float protocol_version = 1;</code>
+         * @return The protocolVersion.
+         */
+        public float getProtocolVersion() {
+          return protocolVersion_;
+        }
+        /**
+         * <pre>
+         * 消息类型
+         * </pre>
+         *
+         * <code>float protocol_version = 1;</code>
+         * @param value The protocolVersion to set.
+         * @return This builder for chaining.
+         */
+        public Builder setProtocolVersion(float value) {
+          
+          protocolVersion_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * 消息类型
+         * </pre>
+         *
+         * <code>float protocol_version = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearProtocolVersion() {
+          
+          protocolVersion_ = 0F;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object messageType_ = "";
+        /**
+         * <pre>
+         * 消息类型
+         * </pre>
+         *
+         * <code>string message_type = 2;</code>
+         * @return The messageType.
+         */
+        public java.lang.String getMessageType() {
+          java.lang.Object ref = messageType_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            messageType_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * 消息类型
+         * </pre>
+         *
+         * <code>string message_type = 2;</code>
+         * @return The bytes for messageType.
+         */
+        public com.google.protobuf.ByteString
+            getMessageTypeBytes() {
+          java.lang.Object ref = messageType_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            messageType_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * 消息类型
+         * </pre>
+         *
+         * <code>string message_type = 2;</code>
+         * @param value The messageType to set.
+         * @return This builder for chaining.
+         */
+        public Builder setMessageType(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          messageType_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * 消息类型
+         * </pre>
+         *
+         * <code>string message_type = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearMessageType() {
+          
+          messageType_ = getDefaultInstance().getMessageType();
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * 消息类型
+         * </pre>
+         *
+         * <code>string message_type = 2;</code>
+         * @param value The bytes for messageType to set.
+         * @return This builder for chaining.
+         */
+        public Builder setMessageTypeBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          messageType_ = value;
+          onChanged();
+          return this;
+        }
+
+        private int length_ ;
+        /**
+         * <pre>
+         * 消息长度 
+         * </pre>
+         *
+         * <code>int32 length = 3;</code>
+         * @return The length.
+         */
+        public int getLength() {
+          return length_;
+        }
+        /**
+         * <pre>
+         * 消息长度 
+         * </pre>
+         *
+         * <code>int32 length = 3;</code>
+         * @param value The length to set.
+         * @return This builder for chaining.
+         */
+        public Builder setLength(int value) {
+          
+          length_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * 消息长度 
+         * </pre>
+         *
+         * <code>int32 length = 3;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearLength() {
+          
+          length_ = 0;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:test.message.Header)
+      }
+
+      // @@protoc_insertion_point(class_scope:test.message.Header)
+      private static final com.den.we.chat.message.Header DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.den.we.chat.message.Header();
+      }
+
+      public static com.den.we.chat.message.Header getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<Header>
+          PARSER = new com.google.protobuf.AbstractParser<Header>() {
+        @java.lang.Override
+        public Header parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Header(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<Header> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<Header> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.den.we.chat.message.Header getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public static final int HEADER_FIELD_NUMBER = 1;
+    private com.den.we.chat.message.Header header_;
+    /**
+     * <code>.test.message.Header header = 1;</code>
+     * @return Whether the header field is set.
+     */
+    public boolean hasHeader() {
+      return header_ != null;
+    }
+    /**
+     * <code>.test.message.Header header = 1;</code>
+     * @return The header.
+     */
+    public com.den.we.chat.message.Header getHeader() {
+      return header_ == null ? com.den.we.chat.message.Header.getDefaultInstance() : header_;
+    }
+    /**
+     * <code>.test.message.Header header = 1;</code>
+     */
+    public com.den.we.chat.message.HeaderOrBuilder getHeaderOrBuilder() {
+      return getHeader();
+    }
+
+    public static final int BODY_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString body_;
+    /**
+     * <code>bytes body = 2;</code>
+     * @return The body.
+     */
+    public com.google.protobuf.ByteString getBody() {
+      return body_;
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -271,142 +2535,139 @@ public final class chat {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getContentBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, content_);
+      if (header_ != null) {
+        output.writeMessage(1, getHeader());
       }
-      if (!getSendToBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, sendTo_);
-      }
-      if (!getSendFromBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sendFrom_);
+      if (!body_.isEmpty()) {
+        output.writeBytes(2, body_);
       }
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getContentBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, content_);
+      if (header_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getHeader());
       }
-      if (!getSendToBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, sendTo_);
-      }
-      if (!getSendFromBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sendFrom_);
+      if (!body_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, body_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof message)) {
+      if (!(obj instanceof com.den.we.chat.message)) {
         return super.equals(obj);
       }
-      message other = (message) obj;
+      com.den.we.chat.message other = (com.den.we.chat.message) obj;
 
-      if (!getContent()
-          .equals(other.getContent())) return false;
-      if (!getSendTo()
-          .equals(other.getSendTo())) return false;
-      if (!getSendFrom()
-          .equals(other.getSendFrom())) return false;
+      if (hasHeader() != other.hasHeader()) return false;
+      if (hasHeader()) {
+        if (!getHeader()
+            .equals(other.getHeader())) return false;
+      }
+      if (!getBody()
+          .equals(other.getBody())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + CONTENT_FIELD_NUMBER;
-      hash = (53 * hash) + getContent().hashCode();
-      hash = (37 * hash) + SEND_TO_FIELD_NUMBER;
-      hash = (53 * hash) + getSendTo().hashCode();
-      hash = (37 * hash) + SEND_FROM_FIELD_NUMBER;
-      hash = (53 * hash) + getSendFrom().hashCode();
+      if (hasHeader()) {
+        hash = (37 * hash) + HEADER_FIELD_NUMBER;
+        hash = (53 * hash) + getHeader().hashCode();
+      }
+      hash = (37 * hash) + BODY_FIELD_NUMBER;
+      hash = (53 * hash) + getBody().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static message parseFrom(
+    public static com.den.we.chat.message parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static message parseFrom(
+    public static com.den.we.chat.message parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static message parseFrom(
+    public static com.den.we.chat.message parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static message parseFrom(
+    public static com.den.we.chat.message parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static message parseFrom(byte[] data)
+    public static com.den.we.chat.message parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static message parseFrom(
+    public static com.den.we.chat.message parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static message parseFrom(java.io.InputStream input)
+    public static com.den.we.chat.message parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static message parseFrom(
+    public static com.den.we.chat.message parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static message parseDelimitedFrom(java.io.InputStream input)
+    public static com.den.we.chat.message parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static message parseDelimitedFrom(
+    public static com.den.we.chat.message parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static message parseFrom(
+    public static com.den.we.chat.message parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static message parseFrom(
+    public static com.den.we.chat.message parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -414,21 +2675,21 @@ public final class chat {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(message prototype) {
+    public static Builder newBuilder(com.den.we.chat.message prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
@@ -440,18 +2701,18 @@ public final class chat {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:test.message)
-        messageOrBuilder {
+        com.den.we.chat.messageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return chat.internal_static_test_message_descriptor;
+        return com.den.we.chat.internal_static_test_message_descriptor;
       }
 
-      @Override
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return chat.internal_static_test_message_fieldAccessorTable
+        return com.den.we.chat.internal_static_test_message_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                message.class, Builder.class);
+                com.den.we.chat.message.class, com.den.we.chat.message.Builder.class);
       }
 
       // Construct using com.den.we.chat.message.newBuilder()
@@ -469,124 +2730,123 @@ public final class chat {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
-        content_ = "";
-
-        sendTo_ = "";
-
-        sendFrom_ = "";
+        if (headerBuilder_ == null) {
+          header_ = null;
+        } else {
+          header_ = null;
+          headerBuilder_ = null;
+        }
+        body_ = com.google.protobuf.ByteString.EMPTY;
 
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return chat.internal_static_test_message_descriptor;
+        return com.den.we.chat.internal_static_test_message_descriptor;
       }
 
-      @Override
-      public message getDefaultInstanceForType() {
-        return message.getDefaultInstance();
+      @java.lang.Override
+      public com.den.we.chat.message getDefaultInstanceForType() {
+        return com.den.we.chat.message.getDefaultInstance();
       }
 
-      @Override
-      public message build() {
-        message result = buildPartial();
+      @java.lang.Override
+      public com.den.we.chat.message build() {
+        com.den.we.chat.message result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public message buildPartial() {
-        message result = new message(this);
-        result.content_ = content_;
-        result.sendTo_ = sendTo_;
-        result.sendFrom_ = sendFrom_;
+      @java.lang.Override
+      public com.den.we.chat.message buildPartial() {
+        com.den.we.chat.message result = new com.den.we.chat.message(this);
+        if (headerBuilder_ == null) {
+          result.header_ = header_;
+        } else {
+          result.header_ = headerBuilder_.build();
+        }
+        result.body_ = body_;
         onBuilt();
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof message) {
-          return mergeFrom((message)other);
+        if (other instanceof com.den.we.chat.message) {
+          return mergeFrom((com.den.we.chat.message)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(message other) {
-        if (other == message.getDefaultInstance()) return this;
-        if (!other.getContent().isEmpty()) {
-          content_ = other.content_;
-          onChanged();
+      public Builder mergeFrom(com.den.we.chat.message other) {
+        if (other == com.den.we.chat.message.getDefaultInstance()) return this;
+        if (other.hasHeader()) {
+          mergeHeader(other.getHeader());
         }
-        if (!other.getSendTo().isEmpty()) {
-          sendTo_ = other.sendTo_;
-          onChanged();
-        }
-        if (!other.getSendFrom().isEmpty()) {
-          sendFrom_ = other.sendFrom_;
-          onChanged();
+        if (other.getBody() != com.google.protobuf.ByteString.EMPTY) {
+          setBody(other.getBody());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        message parsedMessage = null;
+        com.den.we.chat.message parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (message) e.getUnfinishedMessage();
+          parsedMessage = (com.den.we.chat.message) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -596,240 +2856,164 @@ public final class chat {
         return this;
       }
 
-      private Object content_ = "";
+      private com.den.we.chat.message.Header header_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.den.we.chat.message.Header, com.den.we.chat.message.Header.Builder, com.den.we.chat.message.HeaderOrBuilder> headerBuilder_;
       /**
-       * <code>string content = 1;</code>
-       * @return The content.
+       * <code>.test.message.Header header = 1;</code>
+       * @return Whether the header field is set.
        */
-      public String getContent() {
-        Object ref = content_;
-        if (!(ref instanceof String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
-          content_ = s;
-          return s;
+      public boolean hasHeader() {
+        return headerBuilder_ != null || header_ != null;
+      }
+      /**
+       * <code>.test.message.Header header = 1;</code>
+       * @return The header.
+       */
+      public com.den.we.chat.message.Header getHeader() {
+        if (headerBuilder_ == null) {
+          return header_ == null ? com.den.we.chat.message.Header.getDefaultInstance() : header_;
         } else {
-          return (String) ref;
+          return headerBuilder_.getMessage();
         }
       }
       /**
-       * <code>string content = 1;</code>
-       * @return The bytes for content.
+       * <code>.test.message.Header header = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getContentBytes() {
-        Object ref = content_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
-          content_ = b;
-          return b;
+      public Builder setHeader(com.den.we.chat.message.Header value) {
+        if (headerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          header_ = value;
+          onChanged();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          headerBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.test.message.Header header = 1;</code>
+       */
+      public Builder setHeader(
+          com.den.we.chat.message.Header.Builder builderForValue) {
+        if (headerBuilder_ == null) {
+          header_ = builderForValue.build();
+          onChanged();
+        } else {
+          headerBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.test.message.Header header = 1;</code>
+       */
+      public Builder mergeHeader(com.den.we.chat.message.Header value) {
+        if (headerBuilder_ == null) {
+          if (header_ != null) {
+            header_ =
+              com.den.we.chat.message.Header.newBuilder(header_).mergeFrom(value).buildPartial();
+          } else {
+            header_ = value;
+          }
+          onChanged();
+        } else {
+          headerBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.test.message.Header header = 1;</code>
+       */
+      public Builder clearHeader() {
+        if (headerBuilder_ == null) {
+          header_ = null;
+          onChanged();
+        } else {
+          header_ = null;
+          headerBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.test.message.Header header = 1;</code>
+       */
+      public com.den.we.chat.message.Header.Builder getHeaderBuilder() {
+        
+        onChanged();
+        return getHeaderFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.test.message.Header header = 1;</code>
+       */
+      public com.den.we.chat.message.HeaderOrBuilder getHeaderOrBuilder() {
+        if (headerBuilder_ != null) {
+          return headerBuilder_.getMessageOrBuilder();
+        } else {
+          return header_ == null ?
+              com.den.we.chat.message.Header.getDefaultInstance() : header_;
         }
       }
       /**
-       * <code>string content = 1;</code>
-       * @param value The content to set.
-       * @return This builder for chaining.
+       * <code>.test.message.Header header = 1;</code>
        */
-      public Builder setContent(
-          String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        content_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string content = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearContent() {
-        
-        content_ = getDefaultInstance().getContent();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string content = 1;</code>
-       * @param value The bytes for content to set.
-       * @return This builder for chaining.
-       */
-      public Builder setContentBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        content_ = value;
-        onChanged();
-        return this;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.den.we.chat.message.Header, com.den.we.chat.message.Header.Builder, com.den.we.chat.message.HeaderOrBuilder> 
+          getHeaderFieldBuilder() {
+        if (headerBuilder_ == null) {
+          headerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.den.we.chat.message.Header, com.den.we.chat.message.Header.Builder, com.den.we.chat.message.HeaderOrBuilder>(
+                  getHeader(),
+                  getParentForChildren(),
+                  isClean());
+          header_ = null;
+        }
+        return headerBuilder_;
       }
 
-      private Object sendTo_ = "";
+      private com.google.protobuf.ByteString body_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>string send_to = 2;</code>
-       * @return The sendTo.
+       * <code>bytes body = 2;</code>
+       * @return The body.
        */
-      public String getSendTo() {
-        Object ref = sendTo_;
-        if (!(ref instanceof String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
-          sendTo_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
+      public com.google.protobuf.ByteString getBody() {
+        return body_;
       }
       /**
-       * <code>string send_to = 2;</code>
-       * @return The bytes for sendTo.
-       */
-      public com.google.protobuf.ByteString
-          getSendToBytes() {
-        Object ref = sendTo_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
-          sendTo_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string send_to = 2;</code>
-       * @param value The sendTo to set.
+       * <code>bytes body = 2;</code>
+       * @param value The body to set.
        * @return This builder for chaining.
        */
-      public Builder setSendTo(
-          String value) {
+      public Builder setBody(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        sendTo_ = value;
+        body_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string send_to = 2;</code>
+       * <code>bytes body = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearSendTo() {
+      public Builder clearBody() {
         
-        sendTo_ = getDefaultInstance().getSendTo();
+        body_ = getDefaultInstance().getBody();
         onChanged();
         return this;
       }
-      /**
-       * <code>string send_to = 2;</code>
-       * @param value The bytes for sendTo to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSendToBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        sendTo_ = value;
-        onChanged();
-        return this;
-      }
-
-      private Object sendFrom_ = "";
-      /**
-       * <code>string send_from = 3;</code>
-       * @return The sendFrom.
-       */
-      public String getSendFrom() {
-        Object ref = sendFrom_;
-        if (!(ref instanceof String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
-          sendFrom_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
-      }
-      /**
-       * <code>string send_from = 3;</code>
-       * @return The bytes for sendFrom.
-       */
-      public com.google.protobuf.ByteString
-          getSendFromBytes() {
-        Object ref = sendFrom_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
-          sendFrom_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string send_from = 3;</code>
-       * @param value The sendFrom to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSendFrom(
-          String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        sendFrom_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string send_from = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearSendFrom() {
-        
-        sendFrom_ = getDefaultInstance().getSendFrom();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string send_from = 3;</code>
-       * @param value The bytes for sendFrom to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSendFromBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        sendFrom_ = value;
-        onChanged();
-        return this;
-      }
-      @Override
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @Override
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -840,18 +3024,18 @@ public final class chat {
     }
 
     // @@protoc_insertion_point(class_scope:test.message)
-    private static final message DEFAULT_INSTANCE;
+    private static final com.den.we.chat.message DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new message();
+      DEFAULT_INSTANCE = new com.den.we.chat.message();
     }
 
-    public static message getDefaultInstance() {
+    public static com.den.we.chat.message getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<message>
         PARSER = new com.google.protobuf.AbstractParser<message>() {
-      @Override
+      @java.lang.Override
       public message parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -864,13 +3048,13 @@ public final class chat {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<message> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public message getDefaultInstanceForType() {
+    @java.lang.Override
+    public com.den.we.chat.message getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -881,6 +3065,21 @@ public final class chat {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_test_message_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_test_message_chat_message_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_test_message_chat_message_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_test_message_friend_request_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_test_message_friend_request_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_test_message_Header_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_test_message_Header_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -889,10 +3088,15 @@ public final class chat {
   private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    String[] descriptorData = {
-      "\n\rmessage.proto\022\004test\">\n\007message\022\017\n\007cont" +
-      "ent\030\001 \001(\t\022\017\n\007send_to\030\002 \001(\t\022\021\n\tsend_from\030" +
-      "\003 \001(\tB\022\n\ncom.den.weB\004chatb\006proto3"
+    java.lang.String[] descriptorData = {
+      "\n\rmessage.proto\022\004test\"\204\002\n\007message\022$\n\006hea" +
+      "der\030\001 \001(\0132\024.test.message.Header\022\014\n\004body\030" +
+      "\002 \001(\014\032C\n\014chat_message\022\017\n\007content\030\001 \001(\t\022\017" +
+      "\n\007send_to\030\002 \001(\t\022\021\n\tsend_from\030\003 \001(\t\0326\n\016fr" +
+      "iend_request\022\022\n\napply_from\030\001 \001(\t\022\020\n\010appl" +
+      "y_to\030\002 \001(\t\032H\n\006Header\022\030\n\020protocol_version" +
+      "\030\001 \001(\002\022\024\n\014message_type\030\002 \001(\t\022\016\n\006length\030\003" +
+      " \001(\005B\022\n\ncom.den.weB\004chatb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -903,7 +3107,25 @@ public final class chat {
     internal_static_test_message_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_test_message_descriptor,
-        new String[] { "Content", "SendTo", "SendFrom", });
+        new java.lang.String[] { "Header", "Body", });
+    internal_static_test_message_chat_message_descriptor =
+      internal_static_test_message_descriptor.getNestedTypes().get(0);
+    internal_static_test_message_chat_message_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_test_message_chat_message_descriptor,
+        new java.lang.String[] { "Content", "SendTo", "SendFrom", });
+    internal_static_test_message_friend_request_descriptor =
+      internal_static_test_message_descriptor.getNestedTypes().get(1);
+    internal_static_test_message_friend_request_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_test_message_friend_request_descriptor,
+        new java.lang.String[] { "ApplyFrom", "ApplyTo", });
+    internal_static_test_message_Header_descriptor =
+      internal_static_test_message_descriptor.getNestedTypes().get(2);
+    internal_static_test_message_Header_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_test_message_Header_descriptor,
+        new java.lang.String[] { "ProtocolVersion", "MessageType", "Length", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
