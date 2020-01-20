@@ -1,11 +1,6 @@
 package com.den.we.config;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.den.we.constant.SessionAttribute;
-import com.den.we.entity.User;
 import com.den.we.transform.AuthidUserInfo;
-import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -17,10 +12,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.Map;
 
 import static com.den.we.constant.SessionAttribute.SESSION_USER_INFO;
 

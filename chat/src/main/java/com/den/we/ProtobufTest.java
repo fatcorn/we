@@ -34,7 +34,7 @@ public class ProtobufTest {
         chat.message.chat_message chat_message = chatMessageBuilder.build();
         // 序列化，byte[]可以被写到磁盘文件，或者通过网络发送出去。
         byte[] data = chat_message.toByteArray();
-        messageBuilder.setBody(ByteString.copyFrom(data));
+        //messageBuilder.setBody(ByteString.copyFrom(data));
 
         chat.message message = messageBuilder.build();
         System.out.println("serialization end." + message.toByteArray().length +  Arrays.toString(message.toByteArray()));

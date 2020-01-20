@@ -8,6 +8,7 @@ phoneNumber=13579&password=123456
 ###登录接口
 POST http://127.0.0.1:9201/UCENTER/uc/login/login
 Content-Type: application/x-www-form-urlencoded
+x-auth-token: 587e7c45-1e7c-4207-9125-60778e774128
 
 phoneNumber=123456&password=123456
 

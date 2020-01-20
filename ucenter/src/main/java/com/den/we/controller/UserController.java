@@ -9,9 +9,6 @@ import com.den.we.entity.User;
 import com.den.we.service.IFriendRequestService;
 import com.den.we.service.IUserService;
 import com.den.we.transform.AuthidUserInfo;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
