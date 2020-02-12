@@ -31,7 +31,7 @@ import java.util.Optional;
  *    3000  参数绑定错误(如:必须参数没传递)
  *    6000  数据过期，请刷新重试
  *
- * @author yangch
+ * @author fatKarin
  * @time 2019.01.23 16:22
  */
 @AllArgsConstructor
@@ -102,11 +102,8 @@ public enum MessageCode {
      */
     public static MessageCode convertToMessageCode(String name, MessageCode defaultMessageCode){
         Optional<MessageCode> messageCodeOptional = convertToOptionalMessageCode(name);
-        if (messageCodeOptional.isPresent()) {
-            return messageCodeOptional.get();
-        }
+        return messageCodeOptional.orElse(defaultMessageCode);
 
-        return defaultMessageCode;
     }
 
     /**

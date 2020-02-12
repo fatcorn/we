@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.den.we.AssertUtil;
 import com.den.we.MessageCode;
 import com.den.we.MessageRespResult;
+import com.den.we.Vo.UserInfoVo;
 import com.den.we.entity.User;
 import com.den.we.service.IUserService;
 import com.den.we.transform.AuthidUserInfo;
@@ -46,6 +47,6 @@ public class LoginController {
 
         AssertUtil.isTrue(user.getPassword().equals(encryptPassword), MessageCode.INCORRECT_PASSWORD);
         request.getSession().setAttribute(SESSION_USER_INFO, authidUser);
-        return MessageRespResult.success();
+        return MessageRespResult.success4Data(UserInfoVo.buildByUser(user));
     }
 }

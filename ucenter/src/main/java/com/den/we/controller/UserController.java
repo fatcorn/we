@@ -6,7 +6,9 @@ import com.den.we.MessageCode;
 import com.den.we.MessageRespResult;
 import com.den.we.Vo.UserInfoVo;
 import com.den.we.entity.User;
+import com.den.we.entity.UserFriends;
 import com.den.we.service.IFriendRequestService;
+import com.den.we.service.IUserFriendsService;
 import com.den.we.service.IUserService;
 import com.den.we.transform.AuthidUserInfo;
 import org.apache.commons.lang.StringUtils;
@@ -15,6 +17,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+
+import java.util.List;
 
 import static com.den.we.constant.SessionAttribute.SESSION_USER_INFO;
 
@@ -35,6 +39,9 @@ public class UserController {
 
     @Resource
     private IFriendRequestService friendRequestService;
+
+    @Resource
+    private IUserFriendsService userFriendsService;
 
     /**
      * 检索用户，增加用户名策略，用户名不能全为数字,以此来做正则，判断用户检索信息为手机号还是用户名
@@ -68,6 +75,16 @@ public class UserController {
 
         AssertUtil.isTrue(result, MessageCode.ERROR);
         return MessageRespResult.success();
+    }
+
+    /**
+     * 查询用户联系人列表
+     * @param  userInfo 用户session信息
+     * @return List<UserFriends>
+     */
+    @GetMapping("getContacts")
+    public MessageRespResult<List<UserFriends>> getContacts(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo) {
+        return MessageRespResult.success4Data(userFriendsService.findByUserId(userInfo.getId()));
     }
 
     /**

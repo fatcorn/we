@@ -5,10 +5,11 @@
 
 
     <select id="retrieveUser" resultType="com.den.we.Vo.UserInfoVo">
-        select mobile_phone mobilePhone, user_name userName, picture headUrl,country country, city city,nick_name nickName
+        select id userId, mobile_phone mobilePhone, user_name userName, picture headUrl,country country, city city,nick_name nickName
           from  user
         where (mobile_phone = #{retrieveInfo} or user_name=#{retrieveInfo})
     </select>
+
     <select id="findByNameOrPhone" resultType="com.den.we.entity.User" parameterType="java.lang.String">
         SELECT *
             from user

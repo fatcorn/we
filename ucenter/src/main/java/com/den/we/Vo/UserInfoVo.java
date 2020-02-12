@@ -1,12 +1,24 @@
 package com.den.we.Vo;
 
+import com.den.we.entity.User;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  */
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserInfoVo {
+
+    /**
+     * 用户id
+     */
+    private Long userId;
 
     /**
      * 用户名
@@ -37,4 +49,16 @@ public class UserInfoVo {
      * 城市
      */
     private String city;
+
+    public static UserInfoVo buildByUser(User user) {
+        return UserInfoVo.builder()
+                .city(user.getCity())
+                .country(user.getCounty())
+                .userId(user.getId())
+                .headUrl(user.getPicture())
+                .nickName(user.getNickName())
+                .userName(user.getUserName())
+                .mobilePhone(user.getMobilePhone())
+                .build();
+    }
 }
