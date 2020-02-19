@@ -2,15 +2,21 @@ package com.den.we.controller;
 
 
 import com.den.we.AssertUtil;
+import com.den.we.CommonEnum;
 import com.den.we.MessageCode;
 import com.den.we.MessageRespResult;
 import com.den.we.Vo.UserInfoVo;
+import com.den.we.entity.FriendRequest;
 import com.den.we.entity.User;
 import com.den.we.entity.UserFriends;
 import com.den.we.service.IFriendRequestService;
 import com.den.we.service.IUserFriendsService;
 import com.den.we.service.IUserService;
 import com.den.we.transform.AuthidUserInfo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +36,7 @@ import static com.den.we.constant.SessionAttribute.SESSION_USER_INFO;
  * @author fatKarin
  * @since 2019-05-30
  */
+@Api(tags={"用户信息与操作接口"})
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -48,6 +55,10 @@ public class UserController {
      * @param retrieveInfo      检索信息，手机号或用户名
      * @return                  UserInfoVo
      */
+    @ApiOperation(value = "检索用户")
+    @ApiImplicitParams({
+            @ApiImplicitParam(value = "检索信息，手机号或用户名", name = "retrieveInfo", dataTypeClass = String.class, required = true),
+    })
     @GetMapping("/userRetrieve")
     public MessageRespResult<UserInfoVo> userRetrieve(String retrieveInfo) {
 
@@ -59,11 +70,12 @@ public class UserController {
     }
 
     /**
-     * 添加好友请求
+     * 添加好友请求,已通过go-chat代替
      * @param userInfo      userInfo
      * @param retrieveInfo  检索信息，手机号或用户名
      * @return              MessageRespResult
      */
+    @Deprecated
     @GetMapping("/newFriendRequest")
     public MessageRespResult newFriendRequest(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo,String retrieveInfo) {
         AssertUtil.notEmpty(retrieveInfo, MessageCode.REQUIRED_PARAMETER);
@@ -82,9 +94,40 @@ public class UserController {
      * @param  userInfo 用户session信息
      * @return List<UserFriends>
      */
+    @ApiOperation(value = "查询用户联系人列表")
+    @ApiImplicitParams({
+    })
     @GetMapping("getContacts")
     public MessageRespResult<List<UserFriends>> getContacts(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo) {
         return MessageRespResult.success4Data(userFriendsService.findByUserId(userInfo.getId()));
+    }
+
+    /**
+     * 查询用户好友请求历史
+     * @param  userInfo 用户session信息
+     * @return List<UserFriends>
+     */
+    @ApiOperation(value = "查询用户好友请求历史")
+    @ApiImplicitParams({
+    })
+    @GetMapping("getFriendRequest")
+    public MessageRespResult<List<FriendRequest>> getFriendRequest(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo) {
+        return MessageRespResult.success4Data(friendRequestService.findRecordsByUserId(userInfo.getId()));
+    }
+
+    /**
+     * 处理用户好友请求操作
+     * @param requestId     请求id
+     * @param result        操作结果，同意or不同意
+     * @return
+     */
+    @GetMapping("handFriendRequest")
+    public MessageRespResult handFriendRequest(Long requestId, CommonEnum result) {
+        AssertUtil.notNull(requestId,MessageCode.REQUIRED_PARAMETER);
+        AssertUtil.notNull(result,MessageCode.REQUIRED_PARAMETER);
+        //出理用户操作
+        friendRequestService.handleRequest(requestId,result);
+        return MessageRespResult.success();
     }
 
     /**

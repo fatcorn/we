@@ -1,8 +1,11 @@
 package com.den.we.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.den.we.CommonEnum;
 import com.den.we.entity.FriendRequest;
 import com.den.we.entity.User;
+
+import java.util.List;
 
 /**
  * <p>
@@ -21,4 +24,18 @@ public interface IFriendRequestService extends IService<FriendRequest> {
      * @return              boolean
      */
     boolean addNewRequest(Long friendId, Long userId);
+
+    /**
+     * 查找用用户所有好友请求
+     * @param userId
+     * @return
+     */
+    List<FriendRequest> findRecordsByUserId(Long userId);
+
+    /**
+     * 好友请求操作
+     * @param requestId
+     * @return
+     */
+    void handleRequest(Long requestId, CommonEnum result);
 }
