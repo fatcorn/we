@@ -24,6 +24,11 @@ public interface IUserService extends IService<User> {
      */
     boolean register(String phone, String password);
 
+    /**
+     * 检索用户
+     * @param retrieveInfo 检索信息，手机号或用户名
+     * @return UserInfoVo
+     */
     UserInfoVo getUserInfoVo(String retrieveInfo);
 
     User findByPhone(String phone);
