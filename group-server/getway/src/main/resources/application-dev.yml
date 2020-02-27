@@ -16,6 +16,7 @@ spring:
       discovery:
         locator:
           enabled: true
+          lower-case-service-id: true
       #路由配置
       routes:
       - id: ucenter
@@ -26,6 +27,12 @@ spring:
         uri: http://localhost:9205
         predicates:
         - Path=/a/**
+#跳过过滤器,逗号隔开
+filter:
+  invalid:
+    unlimitedPath:
+    - /ucenter/uc/login/login
+    - 123
 #eureka
 eureka:
   client:

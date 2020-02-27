@@ -18,12 +18,11 @@ import java.util.List;
 import static com.den.we.constant.SessionAttribute.SESSION_USER_INFO;
 
 /**
- * 拦截器
+ * 拦截器,已停止使用，在网关做统一身份鉴权
  *
  * @author fatKarin
  * @date 2019/8/29 17:04
  */
-@Configuration
 public class Interceptor implements WebMvcConfigurer {
 
     /**
