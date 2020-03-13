@@ -1,0 +1,27 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection) or
+# paste cURL into the file and request will be converted to HTTP Request format.
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+// 添加超级管理员
+POST http://localhost:9204/admin/test/addSuperAdmin
+Content-Type: application/x-www-form-urlencoded
+
+account=admin&&password=123456
+###
+
+###登录
+POST http://localhost:9204/admin/login
+Content-Type: application/x-www-form-urlencoded
+
+username=admin&&password=123456
+
+###
+GET http://localhost:9204/admin/tagAdmin/findAllTags?currentPage=1&pageSize=10
+Content-Type: application/x-www-form-urlencoded
+
+currentPage=1&pageSize=10
+
+###

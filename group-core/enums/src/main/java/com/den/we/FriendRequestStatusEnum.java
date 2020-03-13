@@ -3,6 +3,8 @@ package com.den.we;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.Arrays;
+
 /**
  * 好友请求状态枚举
  *
@@ -11,7 +13,7 @@ import lombok.Getter;
  */
 @AllArgsConstructor
 @Getter
-public enum FriendRequestStatusEnum {
+public enum FriendRequestStatusEnum implements BaseEnum{
     //0
     REFUSE("已拒绝"),
     //1
@@ -23,4 +25,9 @@ public enum FriendRequestStatusEnum {
     ;
 
     private String cnName;
+
+    @Override
+    public FriendRequestStatusEnum getByIndex(Integer index) {
+        return Arrays.stream(FriendRequestStatusEnum.values()).filter(e -> e.ordinal() == index).findFirst().get();
+    }
 }

@@ -4,7 +4,6 @@ import com.den.we.AssertUtil;
 import com.den.we.MessageCode;
 import com.den.we.MessageRespResult;
 import com.den.we.service.IPublishService;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

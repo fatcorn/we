@@ -2,7 +2,6 @@ package com.den.we.config;
 
 import com.den.we.transform.AuthidUserInfo;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.servlet.HandlerInterceptor;

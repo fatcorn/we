@@ -1,7 +1,6 @@
 package com.den.we.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.den.we.entity.UserFriends;
 import com.den.we.mapper.UserFriendsMapper;

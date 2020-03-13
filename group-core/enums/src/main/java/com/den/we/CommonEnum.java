@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Arrays;
+
 /**
  * 0, 1 公共常量
  *
@@ -13,9 +15,15 @@ import lombok.Setter;
  */
 @AllArgsConstructor
 @Getter
-public enum CommonEnum {
+public enum CommonEnum implements BaseEnum  {
     DISABLE("否"),
     ENABLE("是");
 
     private String cnName;
+
+
+    @Override
+    public CommonEnum getByIndex(Integer index) {
+        return Arrays.stream(CommonEnum.values()).filter(e -> e.ordinal() == index).findFirst().get();
+    }
 }

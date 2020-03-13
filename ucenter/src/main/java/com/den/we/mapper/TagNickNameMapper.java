@@ -1,7 +1,6 @@
 package com.den.we.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.den.we.entity.InterestTag;
 import com.den.we.entity.TagNickName;
 
 /**

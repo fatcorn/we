@@ -4,8 +4,6 @@ import com.den.we.Vo.UserInfoVo;
 import com.den.we.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
-import javax.jws.soap.SOAPBinding;
-
 /**
  * <p>
  *  服务类

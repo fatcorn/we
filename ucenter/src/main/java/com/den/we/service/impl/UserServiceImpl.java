@@ -10,8 +10,6 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-
 /**
  * <p>
  *  服务实现类

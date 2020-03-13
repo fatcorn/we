@@ -2,14 +2,12 @@ package com.den.we;
 
 import com.den.we.service.IPublishService;
 import org.eclipse.paho.client.mqttv3.*;
-import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
-import java.text.MessageFormat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

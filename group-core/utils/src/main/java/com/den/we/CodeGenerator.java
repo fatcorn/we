@@ -29,9 +29,9 @@ public class CodeGenerator {
 
     public static void main(String[]  args) {
         // 实体类名称
-        String entityName = "UserInterestTag";
+        String entityName = "InterestTag";
         // 模块名称，代码文件生成地
-        String moduleName = "/ucenter";
+        String moduleName = "/admin";
 
         String mapperTemplate = "package com.den.we.mapper;\n" +
                 "\n" +

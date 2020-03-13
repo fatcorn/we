@@ -54,9 +54,6 @@ public class InterestTagImpl extends ServiceImpl<InterestTagMapper, InterestTag>
         int result =  this.baseMapper.insert(interestTag);
         AssertUtil.isTrue(result > 0, MessageCode.ERROR);
 
-        /**
-         * 新建社区，设立版主
-         */
         // 给标签创建用户添加当前创建标签
         UserInterestTag userInterestTag = new UserInterestTag();
         userInterestTag.setCreateTime(new Date());

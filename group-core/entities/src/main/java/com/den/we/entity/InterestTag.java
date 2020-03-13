@@ -1,7 +1,10 @@
 package com.den.we.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.den.we.CommonEnum;
 import com.den.we.TagSourceEnum;
+import com.den.we.anotation.RequiredParam;
 import lombok.Data;
 
 import java.util.Date;
@@ -15,10 +18,13 @@ import java.io.Serializable;
  */
 @Data
 public class InterestTag implements Serializable {
+
     //id
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     //标签名称
+    @RequiredParam
     private String tagName;
 
     //标签描述
@@ -31,8 +37,11 @@ public class InterestTag implements Serializable {
     //标签来源{0:system,1:user}
     private TagSourceEnum source;
 
-    //祖先id 为0 表示 这是一个大类
-    private Long ancientId;
+    //类型id
+    private Long rootTypeId;
+
+    //父类id
+    private Long superiorId;
 
     //俱乐部使用数
     private Long tagClubNum;

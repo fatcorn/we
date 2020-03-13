@@ -3,7 +3,6 @@ package com.den.we.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.den.we.CommonEnum;
 import com.den.we.entity.FriendRequest;
-import com.den.we.entity.User;
 
 import java.util.List;
 

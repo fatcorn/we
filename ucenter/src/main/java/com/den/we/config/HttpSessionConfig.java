@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.session.web.http.HeaderHttpSessionIdResolver;
 
-import javax.servlet.http.HttpServlet;
-
 //import static org.springframework.session.web.http.HeaderHttpSessionIdResolver.HEADER_AUTHENTICATION_INFO;
 //import static org.springframework.session.web.http.HeaderHttpSessionIdResolver.HEADER_X_AUTH_TOKEN;
 //import org.springframework.session.web.http.CookieHttpSessionStrategy;

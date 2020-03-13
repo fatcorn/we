@@ -3,6 +3,8 @@ package com.den.we;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.Arrays;
+
 /**
  * 0, 1 公共常量
  *
@@ -11,7 +13,7 @@ import lombok.Getter;
  */
 @AllArgsConstructor
 @Getter
-public enum ArticleTypeEnum {
+public enum ArticleTypeEnum implements BaseEnum  {
 
     // 0
     TEXT("文字"),
@@ -23,4 +25,8 @@ public enum ArticleTypeEnum {
     VIDEO("视频");
 
     private String cnName;
+
+    public ArticleTypeEnum getByIndex(Integer index) {
+        return Arrays.stream(ArticleTypeEnum.values()).filter(e -> e.ordinal() == index).findFirst().get();
+    }
 }
