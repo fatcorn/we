@@ -1,32 +1,29 @@
-package com.den.we.entity;
+package com.den.we.admin.vo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.den.we.CommonEnum;
 import com.den.we.TagSourceEnum;
 import com.den.we.anotation.RequiredParam;
+import com.den.we.entity.InterestTag;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
-import java.io.Serializable;
 
 /**
- * (InterestTag)实体类
- *
  * @author fatKarin
- * @since 2019-09-05 17:45:37
+ * @date 2020/3/20 11:11
  */
 @Data
-public class InterestTag implements Serializable {
-
+@Builder
+public class TagTableVo {
     //id
-    @TableId(type = IdType.AUTO)
     private Long id;
 
     //标签名称
-    @RequiredParam
     private String tagName;
 
     //标签描述
@@ -39,10 +36,10 @@ public class InterestTag implements Serializable {
     private TagSourceEnum source;
 
     //类型id
-    private Long rootTypeId;
+    private String rootType;
 
     //父类id
-    private Long superiorId;
+    private String superiorType;
 
     //根标签下一级为1，再下一级为2
     private Integer level;
@@ -52,9 +49,6 @@ public class InterestTag implements Serializable {
 
     //标签使用人数
     private Long tagUserNum;
-
-    //下级标签数
-    private Integer childrenTagNum;
 
     //是否验证 0 否， 1 是
     private CommonEnum verified;
@@ -69,4 +63,20 @@ public class InterestTag implements Serializable {
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
+    public static TagTableVo build(InterestTag interestTag,String superiorType,String rootType) {
+        return TagTableVo.builder()
+                .id(interestTag.getId())
+                .tagName(interestTag.getTagName())
+                .createTime(interestTag.getCreateTime())
+                .level(interestTag.getLevel())
+                .rootType(rootType)
+                .superiorType(superiorType)
+                .updateTime(interestTag.getUpdateTime())
+                .tagClubNum(interestTag.getTagClubNum())
+                .tagUserNum(interestTag.getTagUserNum())
+                .source(interestTag.getSource())
+                .tagComment(interestTag.getTagComment())
+                .userId(interestTag.getUserId())
+                .verified(interestTag.getVerified()).build();
+    }
 }

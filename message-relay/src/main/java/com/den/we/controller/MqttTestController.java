@@ -2,7 +2,7 @@ package com.den.we.controller;
 
 import com.den.we.AssertUtil;
 import com.den.we.MessageCode;
-import com.den.we.MessageRespResult;
+import com.den.we.MessageResp;
 import com.den.we.service.IPublishService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,12 +28,12 @@ public class MqttTestController {
      * @return
      */
     @PostMapping("/publishMessage")
-    public MessageRespResult publishMessage(String topic, String payload) {
+    public MessageResp publishMessage(String topic, String payload) {
 
        AssertUtil.notEmpty(topic, MessageCode.REQUIRED_PARAMETER);
        boolean result = publishService.tcpPublish(topic, payload);
        AssertUtil.isTrue(result, MessageCode.PUBLISH_FAILED);
-       return MessageRespResult.success();
+       return MessageResp.success();
     }
 
 }

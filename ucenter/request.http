@@ -3,7 +3,7 @@
 POST http://localhost:9202/uc/register/registerByPhone
 Content-Type: application/x-www-form-urlencoded
 
-phoneNumber=test1&password=123456
+phoneNumber=test5&password=123456
 
 ###登录接口
 POST http://127.0.0.1:9201/ucenter/uc/login/login

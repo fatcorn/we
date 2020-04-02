@@ -2,7 +2,7 @@ package com.den.we.controller;
 
 import com.den.we.AssertUtil;
 import com.den.we.MessageCode;
-import com.den.we.MessageRespResult;
+import com.den.we.MessageResp;
 import com.den.we.entity.InterestTag;
 import com.den.we.service.IInterestTagService;
 import com.den.we.transform.AuthidUserInfo;
@@ -32,13 +32,13 @@ public class InterestTagController {
      * @return              MessageRespResult
      */
     @PostMapping("/customerAdd")
-    public MessageRespResult customerAdd(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo, String interestTag, String comment) {
+    public MessageResp customerAdd(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo, String interestTag, String comment) {
 
         AssertUtil.notEmpty(interestTag, MessageCode.REQUIRED_PARAMETER);
 
         boolean result = interestTagService.addOneByUser(interestTag, comment, userInfo.getId());
         AssertUtil.isTrue(result, MessageCode.ERROR);
-        return MessageRespResult.success();
+        return MessageResp.success();
     }
 
     /**
@@ -48,7 +48,7 @@ public class InterestTagController {
      * @return
      */
     @GetMapping("/interestInTag")
-    public MessageRespResult interestInTag(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo, String tagName) {
+    public MessageResp interestInTag(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo, String tagName) {
 
         AssertUtil.notEmpty(tagName, MessageCode.REQUIRED_PARAMETER);
 
@@ -58,6 +58,6 @@ public class InterestTagController {
 
         boolean result =  interestTagService.interestInTag(userInfo.getId(), interestTag.getId());
         AssertUtil.isTrue(result, MessageCode.ERROR);
-        return MessageRespResult.success();
+        return MessageResp.success();
     }
 }

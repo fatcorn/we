@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.den.we.CommonEnum;
 import com.den.we.FriendRequestStatusEnum;
-import com.den.we.MessageRespResult;
+import com.den.we.MessageResp;
 import com.den.we.constant.MqtTopic;
 import com.den.we.entity.FriendRequest;
 import com.den.we.entity.UserFriends;
@@ -54,8 +54,8 @@ public class FriendRequestServiceImpl extends ServiceImpl<FriendRequestMapper, F
             messageMap.put("requestId",String.valueOf(friendRequest.getId()));
             String message = JSONUtils.toJSONString(messageMap);
 
-            MessageRespResult messageRespResult = relayRemoteService.publish(topic,message);
-            log.info("status:" + messageRespResult.getCode()+ "");
+            MessageResp messageResp = relayRemoteService.publish(topic,message);
+            log.info("status:" + messageResp.getCode()+ "");
         } catch (Exception e) {
             e.printStackTrace();
             log.error(e.getMessage());

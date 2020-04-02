@@ -14,7 +14,7 @@ public class CodeGenerator {
 
     private static final String srcPath = "/src/main/java";
 
-    private static final String packagePath = "/com/den/we";
+    private static final String packagePath = "/com/den/we/admin";
 
     private static final String mapperPath = "/mapper";
 
@@ -29,7 +29,7 @@ public class CodeGenerator {
 
     public static void main(String[]  args) {
         // 实体类名称
-        String entityName = "InterestTag";
+        String entityName = "TagType";
         // 模块名称，代码文件生成地
         String moduleName = "/admin";
 

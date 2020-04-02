@@ -1,6 +1,6 @@
 package com.den.we.rpc;
 
-import com.den.we.MessageRespResult;
+import com.den.we.MessageResp;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,5 +13,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface RelayRemoteService {
 
     @PostMapping("/relay/publishMessage")
-    MessageRespResult publish(@RequestParam("topic")String topic, @RequestParam("payload")String payload);
+    MessageResp publish(@RequestParam("topic")String topic, @RequestParam("payload")String payload);
 }

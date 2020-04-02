@@ -67,6 +67,9 @@ public enum MessageCode {
 
     //消息推送模块=5
     PUBLISH_FAILED(50000,"PUBLISH_FAILED", "发布消息失败"),
+
+    //后台管理模块=6
+    TAG_ALREADY_EXITED(60001,"TAG_ALREADY_EXITED","标签名称已经存在"),
     ;
 
 

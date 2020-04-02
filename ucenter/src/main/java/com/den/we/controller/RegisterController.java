@@ -1,6 +1,6 @@
 package com.den.we.controller;
 
-import com.den.we.MessageRespResult;
+import com.den.we.MessageResp;
 import com.den.we.service.IUserService;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,13 +23,13 @@ public class RegisterController {
      * @return
      */
     @PostMapping("/registerByPhone")
-    public MessageRespResult phoneRegister(String phoneNumber, String password) {
+    public MessageResp phoneRegister(String phoneNumber, String password) {
         Assert.notNull(phoneNumber, "手机号不为空");
         Assert.notNull(password, "密码不为空");
 
         boolean result = iUserService.register(phoneNumber, password);
 
         Assert.isTrue(result, "注册失败");
-        return MessageRespResult.success("注册成功");
+        return MessageResp.success("注册成功");
     }
 }

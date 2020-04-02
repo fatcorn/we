@@ -3,7 +3,7 @@ package com.den.we.controller;
 import com.den.we.ArticleTypeEnum;
 import com.den.we.AssertUtil;
 import com.den.we.MessageCode;
-import com.den.we.MessageRespResult;
+import com.den.we.MessageResp;
 import com.den.we.service.IArticleService;
 import com.den.we.service.ICommentService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,7 +42,7 @@ public class ArticleController {
      * @return              MessageRespResult
      */
     @PostMapping("/addNewArticle")
-    public MessageRespResult addNewArticle(Long communityId, String title, String content, Long creatorId, ArticleTypeEnum type) {
+    public MessageResp addNewArticle(Long communityId, String title, String content, Long creatorId, ArticleTypeEnum type) {
 
         // 非空校验
         AssertUtil.notNull(communityId, MessageCode.REQUIRED_PARAMETER);
@@ -53,7 +53,7 @@ public class ArticleController {
 
         boolean result = iArticleService.addNewOne(communityId, title, content, creatorId, type);
         AssertUtil.isTrue(result, MessageCode.SQL_EXECUTE_FAILED);
-        return MessageRespResult.success();
+        return MessageResp.success();
     }
 
     /**
@@ -62,11 +62,11 @@ public class ArticleController {
      * @return              MessageRespResult
      */
     @PostMapping("/thumpUp")
-    public MessageRespResult thumpUp(Long articleId) {
+    public MessageResp thumpUp(Long articleId) {
         AssertUtil.notNull(articleId, MessageCode.REQUIRED_PARAMETER);
         boolean result = iArticleService.thumpUp(articleId);
         AssertUtil.isTrue(result, MessageCode.SQL_EXECUTE_FAILED);
-        return MessageRespResult.success();
+        return MessageResp.success();
     }
 
     /**
@@ -75,11 +75,11 @@ public class ArticleController {
      * @return              MessageRespResult
      */
     @PostMapping("/dislike")
-    public MessageRespResult dislike(Long articleId) {
+    public MessageResp dislike(Long articleId) {
         AssertUtil.notNull(articleId, MessageCode.REQUIRED_PARAMETER);
         boolean result = iArticleService.dislike(articleId);
         AssertUtil.isTrue(result, MessageCode.SQL_EXECUTE_FAILED);
-        return MessageRespResult.success();
+        return MessageResp.success();
     }
 
     /**
@@ -91,7 +91,7 @@ public class ArticleController {
      * @return              MessageRespResult
      */
     @PostMapping("/comment/addNewComment")
-    public MessageRespResult addNewComment(Long articleId, String content, Long creatorId, ArticleTypeEnum type) {
+    public MessageResp addNewComment(Long articleId, String content, Long creatorId, ArticleTypeEnum type) {
         // 非空校验
         AssertUtil.notNull(articleId, MessageCode.REQUIRED_PARAMETER);
         AssertUtil.notNull(content, MessageCode.REQUIRED_PARAMETER);
@@ -100,7 +100,7 @@ public class ArticleController {
 
         boolean result = iCommentService.addNewOne(articleId,content,creatorId,type);
         AssertUtil.isTrue(result, MessageCode.SQL_EXECUTE_FAILED);
-        return MessageRespResult.success();
+        return MessageResp.success();
     }
 
     /**
@@ -109,11 +109,11 @@ public class ArticleController {
      * @return              MessageRespResult
      */
     @PostMapping("/comment/thumpUpComment")
-    public MessageRespResult thumpUpComment(Long CommentId) {
+    public MessageResp thumpUpComment(Long CommentId) {
         AssertUtil.notNull(CommentId, MessageCode.REQUIRED_PARAMETER);
         boolean result = iCommentService.thumpUp(CommentId);
         AssertUtil.isTrue(result, MessageCode.SQL_EXECUTE_FAILED);
-        return MessageRespResult.success();
+        return MessageResp.success();
     }
 
     /**
@@ -122,11 +122,11 @@ public class ArticleController {
      * @return              MessageRespResult
      */
     @PostMapping("/comment/dislike")
-    public MessageRespResult dislikeComment(Long CommentId) {
+    public MessageResp dislikeComment(Long CommentId) {
         AssertUtil.notNull(CommentId, MessageCode.REQUIRED_PARAMETER);
         boolean result = iCommentService.dislike(CommentId);
         AssertUtil.isTrue(result, MessageCode.SQL_EXECUTE_FAILED);
-        return MessageRespResult.success();
+        return MessageResp.success();
     }
 
     /**
@@ -135,7 +135,7 @@ public class ArticleController {
      * @return
      */
     @RequestMapping("/uploadResources")
-    public MessageRespResult uploadResources(@RequestParam(value = "file") MultipartFile file) {
+    public MessageResp uploadResources(@RequestParam(value = "file") MultipartFile file) {
         AssertUtil.notNull(file, MessageCode.UPLOAD_FILE_NOT_BE_NULL);
 
         String fileName = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + "_" + file.getName();
@@ -152,10 +152,10 @@ public class ArticleController {
             //url="http://你自己的域名/项目名/images/"+fileName;//正式项目
 
         } catch (IOException e) {
-            return MessageRespResult.error(MessageCode.UPLOAD_FAILED);
+            return MessageResp.error(MessageCode.UPLOAD_FAILED);
         }
 
-        return MessageRespResult.success4Data(path);
+        return MessageResp.success4Data(path);
     }
 
 

@@ -2,7 +2,7 @@ package com.den.we.controller;
 
 import com.den.we.AssertUtil;
 import com.den.we.MessageCode;
-import com.den.we.MessageRespResult;
+import com.den.we.MessageResp;
 import com.den.we.Vo.UserInfoVo;
 import com.den.we.entity.User;
 import com.den.we.service.IUserService;
@@ -34,7 +34,7 @@ public class LoginController {
             @ApiImplicitParam(value = "密码", name = "password", dataTypeClass = String.class, required = true),
     })
     @RequestMapping("/login")
-    public MessageRespResult login(HttpServletRequest request, String phoneNumber, String password) {
+    public MessageResp login(HttpServletRequest request, String phoneNumber, String password) {
         AssertUtil.notNull(phoneNumber, MessageCode.REQUIRED_PARAMETER);
         AssertUtil.notNull(password, MessageCode.REQUIRED_PARAMETER);
 
@@ -46,6 +46,6 @@ public class LoginController {
 
         AssertUtil.isTrue(user.getPassword().equals(encryptPassword), MessageCode.INCORRECT_PASSWORD);
         request.getSession().setAttribute(SESSION_USER_INFO, authidUser);
-        return MessageRespResult.success4Data(UserInfoVo.buildByUser(user));
+        return MessageResp.success4Data(UserInfoVo.buildByUser(user));
     }
 }

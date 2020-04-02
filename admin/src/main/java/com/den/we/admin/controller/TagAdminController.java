@@ -1,17 +1,20 @@
 package com.den.we.admin.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.den.we.AssertUtil;
 import com.den.we.MessageCode;
-import com.den.we.MessageRespResult;
+import com.den.we.MessageResp;
 import com.den.we.admin.service.IInterestTagService;
+import com.den.we.admin.service.ITagTypeService;
+import com.den.we.admin.vo.TagTableVo;
+import com.den.we.admin.vo.TagTypeNameVo;
 import com.den.we.entity.InterestTag;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.den.we.entity.TagType;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,55 +29,121 @@ public class TagAdminController {
     @Resource
     private IInterestTagService tagService;
 
+    @Resource
+    private ITagTypeService tagTypeService;
+
     /**
      * 分页查询标签
-     * @param currentPage
-     * @param pageSize
-     * @return
+     * @param   currentPage currentPage
+     * @param   pageSize     pageSize
+     * @return  MessageResp
      */
     @GetMapping("/findAllTags")
-    public MessageRespResult<IPage<InterestTag>> findAllTags(Integer currentPage, Integer pageSize) {
+    public MessageResp<IPage<TagTableVo>> findAllTags(Integer currentPage, Integer pageSize) {
         AssertUtil.notNull(currentPage, MessageCode.REQUIRED_PARAMETER);
         AssertUtil.notNull(pageSize, MessageCode.REQUIRED_PARAMETER);
-        return MessageRespResult.success4Data(tagService.findTagsByPage(currentPage,pageSize));
+        return MessageResp.success4Data(tagService.findTagsByPage(currentPage,pageSize));
     }
 
     /**
      * 新增标签
      * @param interestTag   标签
-     * @return
+     * @return MessageResp
      */
     @PostMapping("/addNewTag")
-    public MessageRespResult addNewTag(InterestTag interestTag) {
+    public MessageResp addNewTag(InterestTag interestTag) {
         AssertUtil.fieldNotNull(interestTag,MessageCode.REQUIRED_PARAMETER);
         boolean result =  tagService.addNewTag(interestTag);
         AssertUtil.isTrue(result, MessageCode.ERROR);
-        return MessageRespResult.success();
+        return MessageResp.success();
     }
 
     /**
      * 更新标签
      * @param interestTag   标签
-     * @return
+     * @return MessageResp
      */
     @PostMapping("/updateTag")
-    public MessageRespResult updateTag(InterestTag interestTag) {
-        AssertUtil.notNull(interestTag,MessageCode.REQUIRED_PARAMETER);
+    public MessageResp updateTag(InterestTag interestTag) {
+        AssertUtil.fieldNotNull(interestTag,MessageCode.REQUIRED_PARAMETER);
         boolean result =  tagService.updateById(interestTag);
         AssertUtil.isTrue(result, MessageCode.ERROR);
-        return MessageRespResult.success();
+        return MessageResp.success();
     }
 
     /**
      * 删除标签
      * @param id    标签id
-     * @return
+     * @return MessageResp
      */
-    @PostMapping("/deleteTag")
-    public MessageRespResult deleteTag(Long id) {
+    @DeleteMapping("/deleteTag")
+    public MessageResp deleteTag(Long id) {
         AssertUtil.notNull(id,MessageCode.REQUIRED_PARAMETER);
         boolean result =  tagService.removeById(id);
         AssertUtil.isTrue(result, MessageCode.ERROR);
-        return MessageRespResult.success();
+        return MessageResp.success();
     }
+
+    /**
+     * 分页查询标签根类型
+     * @param   currentPage   currentPage
+     * @param   pageSize      pageSize
+     * @return  MessageResp
+     */
+    @GetMapping("/root/types")
+    public MessageResp<IPage<TagType>> findAllRootTypes(Integer currentPage, Integer pageSize) {
+        AssertUtil.notNull(currentPage, MessageCode.REQUIRED_PARAMETER);
+        AssertUtil.notNull(pageSize, MessageCode.REQUIRED_PARAMETER);
+        return MessageResp.success4Data(tagTypeService.page(new Page<>(currentPage,pageSize)));
+    }
+
+    /**
+     * 查询类型id与类型映射
+     * @return  List
+     */
+    @GetMapping("/root/findAllRootType")
+    public MessageResp<List<TagTypeNameVo>> findAllRootType() {
+        return MessageResp.success4Data(tagTypeService.findNameIdMap());
+    }
+
+    /**
+     * 新增根标签
+     * @param tagType   根标签
+     * @return  MessageResp
+     */
+    @PostMapping("/root/addNew")
+    public MessageResp addRootType(TagType tagType) {
+        AssertUtil.fieldNotNull(tagType,MessageCode.REQUIRED_PARAMETER);
+        tagType.setCreateTime(new Date());
+        boolean result =  tagTypeService.save(tagType);
+        AssertUtil.isTrue(result, MessageCode.ERROR);
+        return MessageResp.success();
+    }
+
+    /**
+     * 更新根标签
+     * @param tagType   根标签
+     * @return  MessageResp
+     */
+    @PostMapping("/root/update")
+    public MessageResp updateRootType(TagType tagType) {
+        AssertUtil.fieldNotNull(tagType,MessageCode.REQUIRED_PARAMETER);
+        boolean result =  tagTypeService.updateById(tagType);
+        AssertUtil.isTrue(result, MessageCode.ERROR);
+        return MessageResp.success();
+    }
+
+    /**
+     * 删除根标签
+     * @param id    标签id
+     * @return  MessageResp
+     */
+    @DeleteMapping("/root/delete")
+    public MessageResp deleteRootType(Long id) {
+        AssertUtil.notNull(id,MessageCode.REQUIRED_PARAMETER);
+        boolean result =  tagTypeService.removeById(id);
+        AssertUtil.isTrue(result, MessageCode.ERROR);
+        return MessageResp.success();
+    }
+
 }

@@ -4,7 +4,7 @@ package com.den.we.controller;
 import com.den.we.AssertUtil;
 import com.den.we.CommonEnum;
 import com.den.we.MessageCode;
-import com.den.we.MessageRespResult;
+import com.den.we.MessageResp;
 import com.den.we.Vo.UserInfoVo;
 import com.den.we.entity.FriendRequest;
 import com.den.we.entity.User;
@@ -57,13 +57,13 @@ public class UserController {
             @ApiImplicitParam(value = "检索信息，手机号或用户名", name = "retrieveInfo", dataTypeClass = String.class, required = true),
     })
     @GetMapping("/userRetrieve")
-    public MessageRespResult<UserInfoVo> userRetrieve(String retrieveInfo) {
+    public MessageResp<UserInfoVo> userRetrieve(String retrieveInfo) {
 
         AssertUtil.notEmpty(retrieveInfo, MessageCode.REQUIRED_PARAMETER);
         UserInfoVo userInfoVo = userService.getUserInfoVo(retrieveInfo);
         AssertUtil.notNull(userInfoVo, MessageCode.USER_NOT_EXIT);
 
-        return  MessageRespResult.success4Data(userInfoVo);
+        return  MessageResp.success4Data(userInfoVo);
     }
 
     /**
@@ -74,7 +74,7 @@ public class UserController {
      */
     @Deprecated
     @GetMapping("/newFriendRequest")
-    public MessageRespResult newFriendRequest(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo,String retrieveInfo) {
+    public MessageResp newFriendRequest(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo, String retrieveInfo) {
         AssertUtil.notEmpty(retrieveInfo, MessageCode.REQUIRED_PARAMETER);
 
         User friendUser = userService.findByNameOrPhone(retrieveInfo);
@@ -83,7 +83,7 @@ public class UserController {
         boolean result = friendRequestService.addNewRequest(friendUser.getId(), userInfo.getId());
 
         AssertUtil.isTrue(result, MessageCode.ERROR);
-        return MessageRespResult.success();
+        return MessageResp.success();
     }
 
     /**
@@ -94,9 +94,9 @@ public class UserController {
     @ApiOperation(value = "查询用户联系人列表")
     @ApiImplicitParams({
     })
-    @GetMapping("getContacts")
-    public MessageRespResult<List<UserFriends>> getContacts(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo) {
-        return MessageRespResult.success4Data(userFriendsService.findByUserId(userInfo.getId()));
+    @GetMapping("friends/list")
+    public MessageResp<List<UserFriends>> getContacts(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo) {
+        return MessageResp.success4Data(userFriendsService.findByUserId(userInfo.getId()));
     }
 
     /**
@@ -108,8 +108,8 @@ public class UserController {
     @ApiImplicitParams({
     })
     @GetMapping("getFriendRequest")
-    public MessageRespResult<List<FriendRequest>> getFriendRequest(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo) {
-        return MessageRespResult.success4Data(friendRequestService.findRecordsByUserId(userInfo.getId()));
+    public MessageResp<List<FriendRequest>> getFriendRequest(@SessionAttribute(SESSION_USER_INFO) AuthidUserInfo userInfo) {
+        return MessageResp.success4Data(friendRequestService.findRecordsByUserId(userInfo.getId()));
     }
 
     /**
@@ -119,12 +119,12 @@ public class UserController {
      * @return
      */
     @GetMapping("handFriendRequest")
-    public MessageRespResult handFriendRequest(Long requestId, CommonEnum result) {
+    public MessageResp handFriendRequest(Long requestId, CommonEnum result) {
         AssertUtil.notNull(requestId,MessageCode.REQUIRED_PARAMETER);
         AssertUtil.notNull(result,MessageCode.REQUIRED_PARAMETER);
         //出理用户操作
         friendRequestService.handleRequest(requestId,result);
-        return MessageRespResult.success();
+        return MessageResp.success();
     }
 
     /**
@@ -133,8 +133,8 @@ public class UserController {
      * @return          MessageRespResult
      */
     @RequestMapping("/getUserInfo")
-    public MessageRespResult<User> getUserInfo(String userId) {
-        return MessageRespResult.success4Data(userService.getById(userId));
+    public MessageResp<User> getUserInfo(String userId) {
+        return MessageResp.success4Data(userService.getById(userId));
     }
 
     @RequestMapping("/hello")

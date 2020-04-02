@@ -1,7 +1,7 @@
 package com.den.we.config;
 
 import com.den.we.MessageCode;
-import com.den.we.MessageRespResult;
+import com.den.we.MessageResp;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,8 +23,8 @@ public class GlobalExceptionConfig {
      */
     @ExceptionHandler(value = IllegalArgumentException.class)
     @ResponseBody
-    public MessageRespResult illegalArgumentException(IllegalArgumentException exception) {
+    public MessageResp illegalArgumentException(IllegalArgumentException exception) {
         MessageCode messageCode = MessageCode.convertToMessageCode(exception.getMessage());
-        return MessageRespResult.error(messageCode);
+        return MessageResp.error(messageCode);
     }
 }

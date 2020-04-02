@@ -1,5 +1,6 @@
 package com.den.we;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -17,6 +18,7 @@ public enum TagSourceEnum implements BaseEnum {
     SYSTEM("系统"),
     USER("用户");
 
+    @JsonValue
     private String cnName;
 
     @Override
