@@ -19,7 +19,7 @@
         <spring-boot_version>2.0.6.RELEASE</spring-boot_version>
         <spring-cloud_version>Finchley.SR3</spring-cloud_version>
         <druid_version>1.1.12</druid_version>
-        <mysql_version>6.0.6</mysql_version>
+        <mysql_version>8.0.28</mysql_version>
         <mybatis_plus_version>3.1.1</mybatis_plus_version>
         <lombok_version>1.18.4</lombok_version>
     </properties>
